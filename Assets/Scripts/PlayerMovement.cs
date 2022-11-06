@@ -18,7 +18,8 @@ public class PlayerMovement : MonoBehaviour
         h = Input.GetAxisRaw("Horizontal");
         v = Input.GetAxisRaw("Vertical");
 
-        transform.Translate(new Vector2(h, v) * Time.deltaTime * speed); // 
+        transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
+        
     }
 
 /*     private void FixedUpdate() {
