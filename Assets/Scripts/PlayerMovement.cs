@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     float h, v;
-    public static bool isEnd = false;
     Rigidbody2D rigid;
 
     private void Awake() {
@@ -16,12 +15,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isEnd) {
-            h = Input.GetAxisRaw("Horizontal");
-            v = Input.GetAxisRaw("Vertical");
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
 
-            transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
-        }
+        transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
     }
 
 /*     private void FixedUpdate() {

@@ -6,26 +6,20 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     Text text;
-    public float rTime = 10f;
+    public static float rTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<Text>();
+        rTime = GameController.playTime;
     }
 
     // Update is called once per frame
     void Update()
     {
         rTime -= Time.deltaTime;
-        TimeChecher();
+        if (rTime < 0f) rTime = 0;
         text.text = "Remain Time : " + Mathf.Ceil(rTime);
-    }
-
-    private void TimeChecher() {
-        if (rTime < 0) {
-            rTime = 0;
-            PlayerMovement.isEnd = true;
-        }
     }
 }
