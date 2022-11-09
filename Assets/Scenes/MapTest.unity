@@ -615,18 +615,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< HEAD
-  m_Script: {fileID: 11500000, guid: 8730f9dc11fb8194aaa013c903d237ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameoverPopup: {fileID: 376602734}
-=======
   m_Script: {fileID: 11500000, guid: e41fa88ddafea4543b8751aca811a713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cameraSpeed: 5
   player: {fileID: 1432325712}
->>>>>>> fb7dbd0f0495ca8289b268563425f4f3873db765
+  gameoverPopup: {fileID: 376602734}
 --- !u!1 &802018517
 GameObject:
   m_ObjectHideFlags: 0
