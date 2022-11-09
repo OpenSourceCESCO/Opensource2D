@@ -1,4 +1,14 @@
 # Opensource2D
 
-https://youtu.be/9wAOJC6j1R4 - 타이머 기능을 이용하여 시간이 다 되면 플레이어가 이동할 수 없도록 설정
-https://youtu.be/9JvZwMmEydQ - 텔레포트 기능 구현
+## 규칙
+회의 후 추가할 예정
+
+* * *
+## 참고 문헌
+* [Markdown 사용법](https://gist.github.com/ihoneymon/652be052a0727ad59601)
+* [타이머 기능](https://youtu.be/9wAOJC6j1R4)
+* [텔레포트 기능](https://youtu.be/9JvZwMmEydQ)
+* [유니티 merge conflict 발생 시 시도해봄직함](https://cookiehcl.tistory.com/1)
+    - .gitignore에 특정 문구 추가
+    - .gitattributes 생성 후 특정 문구 추가
+
