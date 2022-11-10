@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Time.timeScale = 1; // 시간을 흐르게 하는 요소.
     }
 
     // Update is called once per frame
@@ -28,8 +28,12 @@ public class GameController : MonoBehaviour
 
     public void restartGame() {
         gameoverPopup.gameObject.SetActive(false);
-        Time.timeScale = 1; // 시간을 흐르게 하는 요소.
         Timer.rTime = playTime;
         SceneManager.LoadScene("MapTest");
+    }
+
+    public void goMainScene() {
+        Destroy(GameObject.Find("StageNum"));
+        SceneManager.LoadScene("StartUI");
     }
 }

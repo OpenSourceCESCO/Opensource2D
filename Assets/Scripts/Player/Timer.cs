@@ -14,6 +14,7 @@ public class Timer : MonoBehaviour
     {
         StageManager = GameObject.Find("StageNum");
         rTime = StageManager.GetComponent<ScenesChanger>().stageTime;
+        print(rTime);
         text = GetComponent<Text>();
     }
 
