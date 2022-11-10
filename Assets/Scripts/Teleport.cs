@@ -6,6 +6,7 @@ public class Teleport : MonoBehaviour
 {
     private GameObject player;
     public GameObject portal;
+    public float teleportTime = 0.1f; // 텔레포트 시 이동하는 시간 추가
 
     private float moveFactor = 0.1f;
 
@@ -24,7 +25,8 @@ public class Teleport : MonoBehaviour
             axis[1] = axis[1] == 0 ? axis[1] - align[1] : (axis[1] < 0 ? axis[1] + align[1] - moveFactor : axis[1] + align[1] + moveFactor);
 
             player.transform.position = new Vector2(portal.transform.position.x + axis[0], portal.transform.position.y + axis[1]);
-            print("enter!");
+
+            Timer.rTime -= teleportTime; // 텔레포트 이동 시간. 타이머의 변수에 직접 적용
         }
     }
 
