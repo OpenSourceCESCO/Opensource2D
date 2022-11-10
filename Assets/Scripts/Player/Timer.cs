@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     Text text;
-    public static float rTime = 0f;
+    public static float rTime;
+    GameObject StageManager;
 
     // Start is called before the first frame update
     void Start()
     {
-        rTime = GameController.playTime;
+        StageManager = GameObject.Find("StageNum");
+        rTime = StageManager.GetComponent<ScenesChanger>().stageTime;
         text = GetComponent<Text>();
     }
 

@@ -21,13 +21,8 @@ public class PlayerHP : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerHP.value <= playerHP.minValue) {
-            print(string.Format("{0}, {1}", playerHP.minValue, playerHP.maxValue));
-            fillArea.gameObject.SetActive(false);
-        }
-        else {
-            fillArea.gameObject.SetActive(true);
-        }
+        if (playerHP.value <= playerHP.minValue)    fillArea.gameObject.SetActive(false);
+        else                                        fillArea.gameObject.SetActive(true);
 
         if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
             if (playerHP.value > playerHP.minValue) playerHP.value -= Time.deltaTime * factor;

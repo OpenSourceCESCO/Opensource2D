@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ScenesChanger : MonoBehaviour
 {
+    public float stageTime;
+    public GameObject stageNumObject;
     public void GotoNGStart()
     {
         SceneManager.LoadScene("NewGameUI");
@@ -16,5 +18,6 @@ public class ScenesChanger : MonoBehaviour
     public void GotoMaptest()
     {
         SceneManager.LoadScene("MapTest");
+        DontDestroyOnLoad(stageNumObject);
     }
 }
