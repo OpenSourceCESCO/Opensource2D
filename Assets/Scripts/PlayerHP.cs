@@ -8,6 +8,9 @@ public class PlayerHP : MonoBehaviour
     Slider playerHP;
     Transform fillArea;
 
+    float v, h;
+    float factor = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,11 @@ public class PlayerHP : MonoBehaviour
         else {
             fillArea.gameObject.SetActive(true);
         }
-        // else GameObject.find("Fill Area").gameobject.SetActive(true);
+
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
+            if (playerHP.value > playerHP.minValue) playerHP.value -= Time.deltaTime * factor;
+        } else {
+            if (playerHP.value < playerHP.maxValue) playerHP.value += Time.deltaTime * factor;
+        }
     }
 }
