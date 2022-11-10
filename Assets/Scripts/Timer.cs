@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
     {
         text = GetComponent<Text>();
         rTime = GameController.playTime;
+        print(rTime);
     }
 
     // Update is called once per frame
@@ -20,6 +21,6 @@ public class Timer : MonoBehaviour
     {
         rTime -= Time.deltaTime;
         if (rTime < 0f) rTime = 0;
-        text.text = "Remain Time : " + Mathf.Ceil(rTime);
+        text.text = "Remain Time : " + (rTime); //Mathf.Ceil
     }
 }
