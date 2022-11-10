@@ -11,9 +11,8 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = GetComponent<Text>();
         rTime = GameController.playTime;
-        print(rTime);
+        text = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -21,6 +20,6 @@ public class Timer : MonoBehaviour
     {
         rTime -= Time.deltaTime;
         if (rTime < 0f) rTime = 0;
-        text.text = "Remain Time : " + (rTime); //Mathf.Ceil
+        text.text = string.Format("Remain Time : {0:0.00}", rTime);
     }
 }
