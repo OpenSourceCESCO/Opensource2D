@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     Text text;
-    public static float rTime = 0f;
+    public static float rTime;
+    GameObject StageManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        StageManager = GameObject.Find("StageNum");
+        rTime = StageManager.GetComponent<ScenesChanger>().stageTime;
         text = GetComponent<Text>();
-        rTime = GameController.playTime;
-        print(rTime);
     }
 
     // Update is called once per frame
@@ -21,6 +22,6 @@ public class Timer : MonoBehaviour
     {
         rTime -= Time.deltaTime;
         if (rTime < 0f) rTime = 0;
-        text.text = "Remain Time : " + (rTime); //Mathf.Ceil
+        text.text = string.Format("Remain Time : {0:0.00}", rTime);
     }
 }
