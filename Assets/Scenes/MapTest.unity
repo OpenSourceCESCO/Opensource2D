@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameoverPopup: {fileID: 376602734}
+  pausePopup: {fileID: 4095959306608766626}
 --- !u!1 &570214428
 GameObject:
   m_ObjectHideFlags: 0
@@ -8777,3 +8778,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d5b4f46d57049e4b8d6f120ce0c0d46, type: 3}
+--- !u!1 &4095959306608766626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3249086644551620071, guid: 2d5b4f46d57049e4b8d6f120ce0c0d46, type: 3}
+  m_PrefabInstance: {fileID: 4095959306608766625}
+  m_PrefabAsset: {fileID: 0}
