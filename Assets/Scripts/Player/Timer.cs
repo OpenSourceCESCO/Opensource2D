@@ -12,9 +12,10 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StageManager = GameObject.Find("StageNum");
+/*        StageManager = GameObject.Find("StageNum");
         rTime = StageManager.GetComponent<ScenesChanger>().stageTime;
         print(rTime);
+*/      rTime = 1000f;
         text = GetComponent<Text>();
     }
 
