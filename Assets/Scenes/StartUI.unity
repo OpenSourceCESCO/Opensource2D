@@ -1930,8 +1930,9 @@ GameObject:
   - component: {fileID: 271367573}
   - component: {fileID: 271367572}
   - component: {fileID: 271367571}
+  - component: {fileID: 271367574}
   m_Layer: 5
-  m_Name: Tutor
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2002,17 +2003,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 308179244}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 271367574}
+        m_TargetAssemblyTypeName: ScenesChanger, Assembly-CSharp
+        m_MethodName: GotoSelectScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &271367572
 MonoBehaviour:
@@ -2052,6 +2053,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271367569}
   m_CullTransparentMesh: 1
+--- !u!114 &271367574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271367569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77e27895d10e00c4ba6cb0eb2a917a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageTime: 0
+  stageNumObject: {fileID: 0}
 --- !u!1 &289524713
 GameObject:
   m_ObjectHideFlags: 0
@@ -3468,6 +3483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e27895d10e00c4ba6cb0eb2a917a1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageTime: 0
+  stageNumObject: {fileID: 0}
 --- !u!1 &914389285
 GameObject:
   m_ObjectHideFlags: 0
@@ -7290,7 +7307,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD29C\uD1A0\uB9AC\uC5BC"
+  m_Text: "\uB9F5 \uD0D0\uBC29"
 --- !u!222 &2010883184
 CanvasRenderer:
   m_ObjectHideFlags: 0
