@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     float h, v;
     Rigidbody2D rigid;
+    Animator anim;
 
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();    
@@ -19,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
         v = Input.GetAxisRaw("Vertical");
 
         transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
+
+        //Animation
+        anim = GetComponent<Animator>();
+        anim.SetInteger("Moveh",(int)h);
+        anim.SetInteger("Movev",(int)v);
     }
 
 /*     private void FixedUpdate() {
