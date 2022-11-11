@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class ScenesChanger : MonoBehaviour
 {
@@ -19,5 +20,14 @@ public class ScenesChanger : MonoBehaviour
     {
         SceneManager.LoadScene("MapTest");
         DontDestroyOnLoad(stageNumObject);
+    }
+    public void GotoSelectScene()
+    {
+        SceneManager.LoadScene("MapSelect");
+    }
+    public void SelectedMap()
+    {
+        GameObject clickBtn = EventSystem.current.currentSelectedGameObject;
+        SceneManager.LoadScene(clickBtn.name);
     }
 }

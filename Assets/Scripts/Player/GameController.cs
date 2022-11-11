@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject gameoverPopup;
     public static float playTime = 10f;
     public GameObject pausePopup;
+    public static bool isPausePopup = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,9 +18,13 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            pausePopup.SetActive(true);
-            Time.timeScale = 0;
+        if (!isPausePopup) {
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                print("False");
+                isPausePopup = true;
+                pausePopup.SetActive(true);
+                Time.timeScale = 0;
+            }
         }
         EndTime();
     }

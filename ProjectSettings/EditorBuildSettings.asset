@@ -8,10 +8,31 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartUI.unity
     guid: 161e31900c9596044a6f00a131caf7bc
-  - enabled: 1
-    path: Assets/Scenes/NewGameUI.unity
-    guid: e6997b9ed42e2eb4cadb76e179cdf74c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/MapTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MapSelect.unity
+    guid: 738a31974a10efa41ab663ce479053c4
+  - enabled: 1
+    path: Assets/Scenes/Map/HouseMap.unity
+    guid: 12383b5f124d2d948aa1ceb6c27838e6
+  - enabled: 1
+    path: Assets/Scenes/Map/SchoolMap.unity
+    guid: 98b3002b74737f34e8bc40ad4911d108
+  - enabled: 1
+    path: Assets/Scenes/Map/EntertainmentMap.unity
+    guid: 1388abc5eb6db5b4c8c890519628e7e7
+  - enabled: 1
+    path: Assets/Scenes/Map/LibraryMap.unity
+    guid: 193d0a65b03f06041959bd6abb41c722
+  - enabled: 1
+    path: Assets/Scenes/Map/ParttimeMap.unity
+    guid: dea9fc5207e660e42906b205b3b5c660
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
