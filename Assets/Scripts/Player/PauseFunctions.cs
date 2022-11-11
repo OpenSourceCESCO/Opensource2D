@@ -5,17 +5,6 @@ using UnityEngine;
 public class PauseFunctions : MonoBehaviour
 {
     public GameObject pausePopup;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void OnResumeBtnClick() {
         GameController.isPausePopup = !GameController.isPausePopup;
@@ -24,7 +13,12 @@ public class PauseFunctions : MonoBehaviour
     }
 
     public void OnSaveBtnClick() {
-        print("미구현");
+        GameObject player = GameObject.Find("Player");
+        SaveLoad.Instance.data.playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+
+        GameObject time = GameObject.Find("Timer");
+        SaveLoad.Instance.data.leftTime = Timer.rTime;
+        SaveLoad.Instance.SaveGameData();
     }
 
     public void OnGoMainBtnClick() {
