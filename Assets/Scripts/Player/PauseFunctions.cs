@@ -14,13 +14,11 @@ public class PauseFunctions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-            pausePopup.SetActive(false);
-            Time.timeScale = 0;
-        }
+
     }
 
     public void OnResumeBtnClick() {
+        GameController.isPausePopup = !GameController.isPausePopup;
         Time.timeScale = 1;
         pausePopup.SetActive(false);
     }
