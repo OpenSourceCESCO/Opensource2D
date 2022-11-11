@@ -5,9 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
+    public GameManager manager;
     float h, v;
     Rigidbody2D rigid;
     Animator anim;
+    Vector3 dirVec;
+    GameObject scanObject;
 
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();    
@@ -16,8 +19,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
+        h = manager.isAction ? 0 :Input.GetAxisRaw("Horizontal");
+        v = manager.isAction ? 0 :Input.GetAxisRaw("Vertical");
 
         transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
 
@@ -25,9 +28,43 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetInteger("Moveh",(int)h);
         anim.SetInteger("Movev",(int)v);
+
+        //Á¶»ç
+        if(v == 1)
+        {
+            dirVec = Vector3.up;
+        }
+        else if (v == -1)
+        {
+            dirVec = Vector3.down;
+        }
+        else if (h == -1)
+        {
+            dirVec = Vector3.left;
+        }
+        else if (h == 1)
+        {
+            dirVec = Vector3.right;
+        }
+
+        //Äù½ºÆ®
+        if(Input.GetButtonDown("Jump") && scanObject != null)
+        {
+            manager.Action(scanObject);
+        }    
     }
 
-/*     private void FixedUpdate() {
-        rigid.velocity = new Vector2(h, v) * speed;    
-    } */
+    private void FixedUpdate() {
+        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0,1,0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("QuestLayer"));
+
+        if(rayHit.collider != null)
+        {
+            scanObject = rayHit.collider.gameObject;
+        }
+        else
+        {
+            scanObject = null;
+        }
+    } 
 }
