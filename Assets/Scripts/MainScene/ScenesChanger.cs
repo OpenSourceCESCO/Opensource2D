@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using System.IO;
 
 public class ScenesChanger : MonoBehaviour
 {
-    public float stageTime;
-    public GameObject stageNumObject;
+    string gamedataFileName = "GameData.json";
     public void GotoNGStart()
     {
         SceneManager.LoadScene("NewGameUI");
@@ -19,7 +19,6 @@ public class ScenesChanger : MonoBehaviour
     public void GotoMaptest()
     {
         SceneManager.LoadScene("MapTest");
-        DontDestroyOnLoad(stageNumObject);
     }
     public void GotoSelectScene()
     {
@@ -29,5 +28,12 @@ public class ScenesChanger : MonoBehaviour
     {
         GameObject clickBtn = EventSystem.current.currentSelectedGameObject;
         SceneManager.LoadScene(clickBtn.name);
+    }
+    public void OnResumeBtnClick() {
+        string filePath = Application.persistentDataPath + "/" + gamedataFileName;
+        if (File.Exists(filePath)) {
+            Singletone.Instance.LoadGameData();
+            SceneManager.LoadScene("MapTest");
+        }
     }
 }

@@ -7,6 +7,9 @@ TagManager:
   - Timer
   - filling
   - NPC
+  - PlayerName
+  - Gender
+  - Grade
   layers:
   - Default
   - TransparentFX

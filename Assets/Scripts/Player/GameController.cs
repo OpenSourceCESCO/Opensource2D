@@ -12,7 +12,9 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1; // 시간을 흐르게 하는 요소.
+        Time.timeScale = 1;
+        Vector2 playerInitPos = Singletone.Instance.saveData.playerPos;
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerInitPos.x, playerInitPos.y);
     }
 
     // Update is called once per frame
@@ -20,7 +22,6 @@ public class GameController : MonoBehaviour
     {
         if (!isPausePopup) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
-                print("False");
                 isPausePopup = true;
                 pausePopup.SetActive(true);
                 Time.timeScale = 0;
@@ -38,12 +39,12 @@ public class GameController : MonoBehaviour
 
     public void restartGame() {
         gameoverPopup.gameObject.SetActive(false);
-        Timer.rTime = playTime;
+        Singletone.Instance.saveData.leftTime = Singletone.Instance.saveData.initTime;
+        Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
         SceneManager.LoadScene("MapTest");
     }
 
     public static void goMainScene() {
-        Destroy(GameObject.Find("StageNum"));
         SceneManager.LoadScene("StartUI");
     }
 }

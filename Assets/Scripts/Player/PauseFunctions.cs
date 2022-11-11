@@ -14,14 +14,15 @@ public class PauseFunctions : MonoBehaviour
 
     public void OnSaveBtnClick() {
         GameObject player = GameObject.Find("Player");
-        SaveLoad.Instance.data.playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
+        Singletone.Instance.saveData.playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
 
-        GameObject time = GameObject.Find("Timer");
-        SaveLoad.Instance.data.leftTime = Timer.rTime;
-        SaveLoad.Instance.SaveGameData();
+        //GameObject time = GameObject.Find("Timer");
+        Singletone.Instance.saveData.leftTime = Timer.rTime;
+        Singletone.Instance.SaveGameData();
     }
 
     public void OnGoMainBtnClick() {
+        GameController.isPausePopup = !GameController.isPausePopup;
         GameController.goMainScene();
     }
 
