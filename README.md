@@ -15,13 +15,14 @@
 
 * 이벤트 스크립트 관련
 ```
-1. 가능하면 하나의 씬에서 SceneScriptManager Component를 생성하여 처리할 것
-2. 데이터의 저장이 필요한 경우, 해당 데이터 타입을 담을 수 있는 클래스를 생성하여 Singletone 클래스 내부에 객체로 만들 것
+1. 가능하면 하나의 씬에서 SceneScriptManager Component를 생성하여 처리할 것.
+1-1. 스크립트는 가능하면 기능별로, 폴더별로, 씬 별로 폴더를 만들어 위치를 알기 쉽게 할 것.
+2. 데이터의 저장이 필요한 경우, 해당 데이터 타입을 담을 수 있는 클래스를 생성하여 Singletone 클래스 내부에 객체로 만들 것.
 ```
 > 싱글톤 사용 예제
 ```c#
 // 싱글톤 클래스
-// 프로그램 실행 중 단 하나만 
+// 프로그램 실행 중 단 한 번만 생성되어 프로그램 종료시까지 유지
 using UnityEngine;
 using System.IO;
 
@@ -42,7 +43,7 @@ public class Singletone {
 using System;
 using UnityEngine;
 
-[Serializable] // 직렬화
+[Serializable] // 직렬화. 저장하기 위해서는 필수적으로 사용
 public class SaveData {
     public float leftTime;
     public Vector2 playerPos;
@@ -64,3 +65,17 @@ public class SaveData {
 * [bolt 사용법](https://young-94.tistory.com/m/55)
 * [unity 빌드 실패시 해결방법](https://citynetc.tistory.com/231)
 * [GameObject는 비활성화된 object를 못찾는다](https://prosto.tistory.com/147)
+* [싱글톤 사용법](https://glikmakesworld.tistory.com/2)
+
+* * *
+## 팁
+* vscode 쓰고 광명 찾자!
+1. vscode에 다음 Extention을 설치한다.
+> [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)    
+> [Debugger For Unity](https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug, "This extension is deprecated as it is no longer being maintained 라고 뜨지만 사용에 문제 없다.")    
+> [Unity Tools](https://marketplace.visualstudio.com/items?itemName=Tobiah.unity-tools)    
+> [Unity Code Snippet](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)    
+2. edit - preferences - external tools에서 script editor을 vscode로 바꾼다.
+
+* * *
+## 여담
