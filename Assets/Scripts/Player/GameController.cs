@@ -7,11 +7,13 @@ public class GameController : MonoBehaviour
 {
     GameObject gameoverPopup;
     GameObject pausePopup;
-    public static float playTime = 10f;
-    public static bool isPausePopup = false;
+    public static bool isPausePopup; // 다른 함수에서도 사용해야 함
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+        isPausePopup = false;
+
         Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
         gameoverPopup = ingameUI.Find("GameOver").gameObject;
         pausePopup = ingameUI.Find("Pause").gameObject;
@@ -41,16 +43,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void restartGame() {
-        Time.timeScale = 1;
-        gameoverPopup.SetActive(false);
-        Singletone.Instance.saveData.leftTime = Singletone.Instance.saveData.initTime;
-        Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
-        SceneManager.LoadScene("MapTest");
-    }
-
     public static void goMainScene() {
-        Time.timeScale = 1;
         SceneManager.LoadScene("StartUI");
     }
 }
