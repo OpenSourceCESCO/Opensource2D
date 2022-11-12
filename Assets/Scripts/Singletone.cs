@@ -8,9 +8,9 @@ public class Singletone
 
     private static Singletone instance;
     public SaveData saveData = new SaveData();
-    public float initTime;
-    public string playerName;
-    public string gender;
+    // public float initTime;
+    // public string playerName;
+    // public string gender;
 
     string gamedataFileName = "GameData.json";
     public static Singletone Instance {
