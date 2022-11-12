@@ -823,7 +823,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 197496074}
+      - m_Target: {fileID: 407738348}
         m_TargetAssemblyTypeName: ResolutionController, Assembly-CSharp
         m_MethodName: FullScreenBtn
         m_Mode: 0
@@ -1095,10 +1095,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 308179244}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 407738349}
+        m_TargetAssemblyTypeName: ScenesChanger, Assembly-CSharp
+        m_MethodName: OnResumeBtnClick
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197496069}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d5cbb949d61394448fe2e2a4fca3241, type: 3}
   m_Name: 
@@ -1931,7 +1931,7 @@ GameObject:
   - component: {fileID: 271367572}
   - component: {fileID: 271367571}
   m_Layer: 5
-  m_Name: Tutor
+  m_Name: Map
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2002,17 +2002,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 308179244}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 407738349}
+        m_TargetAssemblyTypeName: ScenesChanger, Assembly-CSharp
+        m_MethodName: GotoSelectScene
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &271367572
 MonoBehaviour:
@@ -2368,6 +2368,78 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &407738347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 407738351}
+  - component: {fileID: 407738350}
+  - component: {fileID: 407738349}
+  - component: {fileID: 407738348}
+  m_Layer: 0
+  m_Name: SceneScriptManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &407738348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407738347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5cbb949d61394448fe2e2a4fca3241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolutionDropdown: {fileID: 1996157789}
+  fullscreenBtn: {fileID: 175216767}
+--- !u!114 &407738349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407738347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7349447f7daf0ab43ac5db8f878d94ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &407738350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407738347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c570450146aadfb4fb76b54a13cfea56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &407738351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407738347}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417237118
 GameObject:
   m_ObjectHideFlags: 0
@@ -3334,7 +3406,6 @@ GameObject:
   - component: {fileID: 886137357}
   - component: {fileID: 886137356}
   - component: {fileID: 886137355}
-  - component: {fileID: 886137358}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -3406,7 +3477,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 886137358}
+      - m_Target: {fileID: 407738349}
         m_TargetAssemblyTypeName: ScenesChanger, Assembly-CSharp
         m_MethodName: GotoNGStart
         m_Mode: 1
@@ -3456,18 +3527,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886137353}
   m_CullTransparentMesh: 1
---- !u!114 &886137358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 886137353}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77e27895d10e00c4ba6cb0eb2a917a1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &914389285
 GameObject:
   m_ObjectHideFlags: 0
@@ -3636,7 +3695,6 @@ GameObject:
   - component: {fileID: 930096978}
   - component: {fileID: 930096977}
   - component: {fileID: 930096976}
-  - component: {fileID: 930096979}
   m_Layer: 5
   m_Name: Yes
   m_TagString: Untagged
@@ -3708,7 +3766,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 930096979}
+      - m_Target: {fileID: 407738350}
         m_TargetAssemblyTypeName: QuitScript, Assembly-CSharp
         m_MethodName: GameQuit
         m_Mode: 1
@@ -3758,18 +3816,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930096974}
   m_CullTransparentMesh: 1
---- !u!114 &930096979
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930096974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21871c911c99135489599bac7c3c089d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &933407979
 GameObject:
   m_ObjectHideFlags: 0
@@ -6134,7 +6180,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 197496074}
+      - m_Target: {fileID: 407738348}
         m_TargetAssemblyTypeName: ResolutionController, Assembly-CSharp
         m_MethodName: OkBtnClick
         m_Mode: 1
@@ -6828,7 +6874,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: version 0.0.1
+  m_Text: version 0.0.2
 --- !u!222 &1929822821
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7008,7 +7054,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 197496074}
+      - m_Target: {fileID: 407738348}
         m_TargetAssemblyTypeName: ResolutionController, Assembly-CSharp
         m_MethodName: DropdownOptionChange
         m_Mode: 0
@@ -7290,7 +7336,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uD29C\uD1A0\uB9AC\uC5BC"
+  m_Text: "\uB9F5 \uD0D0\uBC29"
 --- !u!222 &2010883184
 CanvasRenderer:
   m_ObjectHideFlags: 0

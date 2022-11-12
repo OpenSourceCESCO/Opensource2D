@@ -8,28 +8,26 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
-    public ScenesChanger sc;
-    public GameObject stageNumObject;
     float timeFactor = 10f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        sc.stageTime = 4 * timeFactor;
-    }
-
-    // Update is called once per frame
-    public void OnClickToggle()
-    {
-        string nowbutton = EventSystem.current.currentSelectedGameObject.name;
-        if      (nowbutton == "2nd") sc.stageTime = Int32.Parse(nowbutton.Substring(0, 1)) * timeFactor;
-        else if (nowbutton == "4th") sc.stageTime = Int32.Parse(nowbutton.Substring(0, 1)) * timeFactor;
-        else if (nowbutton == "5th") sc.stageTime = Int32.Parse(nowbutton.Substring(0, 1)) * timeFactor;
-    }
 
     public void GameStart() {
+        Singletone.Instance.saveData.playerName = GameObject.FindGameObjectWithTag("PlayerName").GetComponent<InputField>().text;
+
+        Toggle[] activedGender = GameObject.FindGameObjectWithTag("Gender").GetComponentsInChildren<Toggle>();
+        for (int i = 0; i < activedGender.Length; i++) {
+            if (activedGender[i].isOn) Singletone.Instance.saveData.gender = activedGender[i].name;
+        }
+
+        Toggle[] activedGrade = GameObject.FindGameObjectWithTag("Grade").GetComponentsInChildren<Toggle>();
+        for (int i = 0; i < activedGrade.Length; i++) {
+            if (activedGrade[i].isOn) {
+                Singletone.Instance.saveData.initTime = Int32.Parse(activedGrade[i].name.Substring(0, 1)) * timeFactor;
+                Singletone.Instance.saveData.leftTime = Singletone.Instance.saveData.initTime;
+            }
+        }
+
+        Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
+        
         SceneManager.LoadScene("MapTest");
-        DontDestroyOnLoad(stageNumObject);
     }
-
-
 }

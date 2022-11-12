@@ -6,7 +6,12 @@ public class CameraMove : MonoBehaviour
 {
     public float cameraSpeed = 5.0f;
 
-    public GameObject player;
+    // public GameObject player;
+    GameObject player;
+
+    void Start() {
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
 
     private void Update()
     {

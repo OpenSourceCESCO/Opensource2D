@@ -6,6 +6,14 @@ TagManager:
   tags:
   - Timer
   - filling
+  - NPC
+  - PlayerName
+  - Gender
+  - Grade
+  - MoveBtn
+  - GameOver
+  - Pause
+  - InGameUI
   layers:
   - Default
   - TransparentFX
@@ -13,7 +21,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - QuestLayer
   - 
   - 
   - 

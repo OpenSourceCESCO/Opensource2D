@@ -6,12 +6,18 @@ public class Teleport : MonoBehaviour
 {
     private GameObject player;
     public GameObject portal;
-    public float teleportTime = 0.1f; // 텔레포트 시 이동하는 시간 추가
-
+    private float teleportTime;
     private float moveFactor = 0.1f;
 
     private float[] axis = new float[2];
     private float[] align = new float[2];
+
+    // Start is called before the first frame update
+    void Start() {
+        player = GameObject.FindWithTag("Player");
+        teleportTime = this.transform.parent.GetComponent<TeleportParent>().getTeleportTime();
+        // print(teleportTime);
+    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.tag == "Player") {
@@ -30,9 +36,4 @@ public class Teleport : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-    }
 }
