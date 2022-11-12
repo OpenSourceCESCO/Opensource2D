@@ -63,3 +63,4 @@ public class SaveData {
 * [컨플릭트 났는데요? - 강제 pull](https://mosei.tistory.com/m/entry/GIT-git-pull-%EC%8B%9C-merge-%EC%98%A4%EB%A5%98%EA%B0%80-%EB%82%A0%EB%95%8C-%EA%B0%95%EC%A0%9C-git-pull-%EB%8D%AE%EC%96%B4%EC%93%B0%EA%B8%B0-%EB%B0%A9%EB%B2%95)
 * [bolt 사용법](https://young-94.tistory.com/m/55)
 * [unity 빌드 실패시 해결방법](https://citynetc.tistory.com/231)
+* [GameObject는 비활성화된 object를 못찾는다](https://prosto.tistory.com/147)

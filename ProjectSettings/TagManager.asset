@@ -10,6 +10,10 @@ TagManager:
   - PlayerName
   - Gender
   - Grade
+  - MoveBtn
+  - GameOver
+  - Pause
+  - InGameUI
   layers:
   - Default
   - TransparentFX

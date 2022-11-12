@@ -5,14 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] GameObject gameoverPopup;
+    GameObject gameoverPopup;
+    GameObject pausePopup;
     public static float playTime = 10f;
-    public GameObject pausePopup;
     public static bool isPausePopup = false;
     // Start is called before the first frame update
     void Start()
     {
-        Time.timeScale = 1;
+        Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
+        gameoverPopup = ingameUI.Find("GameOver").gameObject;
+        pausePopup = ingameUI.Find("Pause").gameObject;
+
+        // Time.timeScale = 1;
         Vector2 playerInitPos = Singletone.Instance.saveData.playerPos;
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerInitPos.x, playerInitPos.y);
     }
@@ -33,18 +37,20 @@ public class GameController : MonoBehaviour
     void EndTime() {
         if (Timer.rTime <= 0) {
             Time.timeScale = 0;
-            gameoverPopup.gameObject.SetActive(true);
+            gameoverPopup.SetActive(true);
         }
     }
 
     public void restartGame() {
-        gameoverPopup.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        gameoverPopup.SetActive(false);
         Singletone.Instance.saveData.leftTime = Singletone.Instance.saveData.initTime;
         Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
         SceneManager.LoadScene("MapTest");
     }
 
     public static void goMainScene() {
+        Time.timeScale = 1;
         SceneManager.LoadScene("StartUI");
     }
 }
