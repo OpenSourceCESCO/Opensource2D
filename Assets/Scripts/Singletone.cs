@@ -8,6 +8,7 @@ public class Singletone
 
     private static Singletone instance;
     public SaveData saveData = new SaveData();
+    public float timeFactor = 10f;
     // public float initTime;
     // public string playerName;
     // public string gender;

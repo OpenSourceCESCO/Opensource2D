@@ -7,13 +7,13 @@ TagManager:
   - Timer
   - filling
   - NPC
-  - PlayerName
   - Gender
   - Grade
   - MoveBtn
   - GameOver
   - Pause
   - InGameUI
+  - Name
   layers:
   - Default
   - TransparentFX
