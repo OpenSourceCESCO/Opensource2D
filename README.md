@@ -12,7 +12,9 @@
 삭제 : -
 수정 : ^
 ```
+* 어떤 git 관리 프로그램을 사용해도 상관없으나, [Sourcetree](https://www.sourcetreeapp.com/)를 사용하는 것을 원칙으로 한다.
 
+### 스크립트 작성
 * 이벤트 스크립트 관련
 ```
 1. 가능하면 하나의 씬에서 SceneScriptManager Component를 생성하여 처리할 것.
@@ -66,6 +68,7 @@ public class SaveData {
 * [unity 빌드 실패시 해결방법](https://citynetc.tistory.com/231)
 * [GameObject는 비활성화된 object를 못찾는다](https://prosto.tistory.com/147)
 * [싱글톤 사용법](https://glikmakesworld.tistory.com/2)
+* [UI에서 버튼 클릭 웨 안댐?](https://wonsorang.tistory.com/693)
 
 * * *
 ## 팁
@@ -77,5 +80,6 @@ public class SaveData {
 > [Unity Code Snippet](https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets)    
 2. edit - preferences - external tools에서 script editor을 vscode로 바꾼다.
 
+* UI에서 버튼 클릭이 안먹힌다면 참고문헌의 *UI에서 버튼 클릭 웨 안댐?* 을 참고하자
 * * *
 ## 여담

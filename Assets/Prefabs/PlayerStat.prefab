@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2592142751531956899}
   - component: {fileID: 7252772854213600382}
   m_Layer: 5
-  m_Name: Grade
+  m_Name: UserGradeMAX
   m_TagString: Grade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,7 +325,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8998040408099621731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,7 +913,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4327830127457552760}
   m_Layer: 5
-  m_Name: GradLayer
+  m_Name: GradeLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
