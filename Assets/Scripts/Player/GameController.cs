@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isPausePopup) {
+        if (!isPausePopup && !gameoverPopup.activeSelf) {
             if (Input.GetKeyDown(KeyCode.Escape)) {
                 isPausePopup = true;
                 pausePopup.SetActive(true);
