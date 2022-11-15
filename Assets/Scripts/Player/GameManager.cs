@@ -9,21 +9,29 @@ public class GameManager : MonoBehaviour
     public Text talkText;
     public GameObject scanObject;
     public bool isAction;
-    // Start is called before the first frame update
+    public int talkIndex;
+    public TalkManager talkManager;
+
     public void Action(GameObject scanObj)
     {
-        if (isAction)
+        scanObject = scanObj;
+        ObjData objData = scanObject.GetComponent<ObjData>();
+        Talk(objData.id);
+        //talkText.text = "이것의 이름은 " + scanObject.name + "이라고 한다.";
+        talkPanel.SetActive(isAction);
+    }
+    void Talk(int id)
+    {
+        string talkData = talkManager.GetTalk(id, talkIndex);
+
+        if(talkData == null)
         {
             isAction = false;
-            talkPanel.SetActive(false);
+            talkIndex = 0;  //대화 종료 시 인덱스 초기화
+            return;
         }
-        else
-        {
-            isAction = true;
-            talkPanel.SetActive(true);
-            scanObject = scanObj;
-            talkText.text = "이것의 이름은 " + scanObject.name + "이라고 한다.";
-        }
-        talkPanel.SetActive(isAction);
+        talkText.text = talkData;
+        isAction = true;
+        talkIndex++;
     }
 }
