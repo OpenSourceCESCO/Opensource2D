@@ -69,6 +69,7 @@ public class SaveData {
 * [GameObject는 비활성화된 object를 못찾는다](https://prosto.tistory.com/147)
 * [싱글톤 사용법](https://glikmakesworld.tistory.com/2)
 * [UI에서 버튼 클릭 웨 안댐?](https://wonsorang.tistory.com/693)
+* [c# JsonUtility로 json 파싱](https://bloodstrawberry.tistory.com/754)
 
 * * *
 ## 팁
