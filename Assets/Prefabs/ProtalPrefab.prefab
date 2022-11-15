@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 68326122594711650}
   m_Layer: 0
   m_Name: portal_2
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portal: {fileID: 6111693283951507344}
-  teleportTime: 0
 --- !u!1 &4944065949514866524
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 568f7966618a229458ae5ffdedff96cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  teleportTime: 0
 --- !u!1 &6111693283951507344
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7011107555682311613}
   m_Layer: 0
   m_Name: portal_1
-  m_TagString: Untagged
+  m_TagString: Portal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -297,4 +297,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portal: {fileID: 2828223214378156084}
-  teleportTime: 0
