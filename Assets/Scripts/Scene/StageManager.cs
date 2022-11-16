@@ -33,6 +33,8 @@ public class StageManager : MonoBehaviour
         }
 
         Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
+
+        Singletone.Instance.InitUserData();
         
         SceneManager.LoadScene("MapTest");
     }

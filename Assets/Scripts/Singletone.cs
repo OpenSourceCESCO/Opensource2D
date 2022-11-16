@@ -21,11 +21,14 @@ public class Singletone
     
     // 이 싱글톤 객체의 생성자
     public Singletone() {
-        playerStats["int"]          = 50;
+    }
+
+    public void InitUserData() {
+        playerStats["intel"]        = 50;
         playerStats["health"]       = 50;
         playerStats["mental"]       = 50;
         playerStats["friendship"]   = 50;
-        playerStats["emothion"]     = 50;
+        playerStats["emotion"]      = 50;
         playerStats["money"]        = 1000;
     }
 
@@ -48,12 +51,13 @@ public class Singletone
         }
     }
 
-
     // 저장하기
     public void SaveGameData()
     {
         // 딕셔너리를 바로 json화 시킬 수 없음.
         // 따라서 배열로 저장한 후, 이 배열을 저장
+        saveData.statNames.Clear();
+        saveData.statValues.Clear();
         foreach (KeyValuePair<string, int> item in playerStats) {
             saveData.statNames.Add(item.Key);
             saveData.statValues.Add(item.Value);
