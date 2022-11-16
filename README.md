@@ -54,6 +54,7 @@ public class SaveData {
     public float initTime;
 }
 ```
+* 스크립트 작성 시 중괄호 시작 위치
 
 * * *
 ## 참고 문헌
@@ -85,5 +86,10 @@ public class SaveData {
 * UI에서 버튼 클릭이 안먹힌다면 참고문헌의 *UI에서 버튼 클릭 웨 안댐?* 을 참고하자
 
 * [unity 빌드 실패시 해결방법](https://citynetc.tistory.com/231)
+* 자동 줄 정렬    
+  ctrl+k ctrl+f    
+  - vscode에서 자동 줄 정렬    
+    줄정렬 변경 - settings → word wrap (on : 중괄호가 밑으로 내려감, off : 중괄호가 밑으로 내려가지 않음)
+  - [Visual Studio에서 자동 줄 정렬](https://notstop.co.kr/1026)
 * * *
 ## 여담

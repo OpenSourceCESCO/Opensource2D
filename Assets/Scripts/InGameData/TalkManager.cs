@@ -10,12 +10,9 @@ public class TalkManager : MonoBehaviour
     TextDatas textDatas;
 
     [Serializable]
-    public class TextData {
+    class TextData {
         public int id;
         public string[] text;
-        public void printDatas() {
-            Debug.Log(string.Format("{0} {1}", id, text[0]));
-        }
     }
 
     class TextDatas {
@@ -32,7 +29,7 @@ public class TalkManager : MonoBehaviour
         string filepath = "Assets/Resources/Json/talkMessage.json";
         string json = File.ReadAllText(filepath);
         textDatas = JsonUtility.FromJson<TextDatas>(json);
-        
+
         for (int i = 0; i < textDatas.data.Length; i++) {
             talkData.Add(textDatas.data[i].id, textDatas.data[i].text);
         }
