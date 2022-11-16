@@ -7,13 +7,14 @@ TagManager:
   - Timer
   - filling
   - NPC
-  - PlayerName
   - Gender
   - Grade
   - MoveBtn
   - GameOver
   - Pause
   - InGameUI
+  - Name
+  - Portal
   layers:
   - Default
   - TransparentFX
