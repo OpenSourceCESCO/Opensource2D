@@ -6,16 +6,13 @@ using System;
 
 public class TalkManager : MonoBehaviour
 {
-    Dictionary<int, string[]> talkData;
+    Dictionary<string, string[]> talkData;
     TextDatas textDatas;
 
     [Serializable]
-    public class TextData {
-        public int id;
+    class TextData {
+        public string id;
         public string[] text;
-        public void printDatas() {
-            Debug.Log(string.Format("{0} {1}", id, text[0]));
-        }
     }
 
     class TextDatas {
@@ -24,7 +21,7 @@ public class TalkManager : MonoBehaviour
 
     void Awake()
     {
-        talkData = new Dictionary<int, string[]>();
+        talkData = new Dictionary<string, string[]>();
         GenerateData();
     }
     void GenerateData()
@@ -32,15 +29,15 @@ public class TalkManager : MonoBehaviour
         string filepath = "Assets/Resources/Json/talkMessage.json";
         string json = File.ReadAllText(filepath);
         textDatas = JsonUtility.FromJson<TextDatas>(json);
-        
+
         for (int i = 0; i < textDatas.data.Length; i++) {
             talkData.Add(textDatas.data[i].id, textDatas.data[i].text);
         }
-        // talkData.Add(1, new string[] { "¾È³ç?", "ÀÌ °÷¿¡ Ã³À½ ¿Ô±¸³ª?" });
-        // talkData.Add(2, new string[] { "Á¤Ã¼ ¸ð¸¦ ¹«¾ð°¡.", "°³¹ßÀÚ ³à¼®ÀÌ Å×½ºÆ®¸¦ À§ÇØ ¹èÄ¡ÇÑ µí ÇÏ´Ù." });
-        // talkData.Add(3, new string[] { "°úÁ¦´Â ´ÙÇß´Ï?", "¿¬±¸½Ç¿¡ °ü½ÉÀÖ´Ù¸é ¿À°Å¶ó." });
+        // talkData.Add(1, new string[] { "ï¿½È³ï¿½?", "ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ ï¿½Ô±ï¿½ï¿½ï¿½?" });
+        // talkData.Add(2, new string[] { "ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½à¼®ï¿½ï¿½ ï¿½×½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ ï¿½Ï´ï¿½." });
+        // talkData.Add(3, new string[] { "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ß´ï¿½?", "ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½Å¶ï¿½." });
     }
-    public string GetTalk(int id, int talkIndex)
+    public string GetTalk(string id, int talkIndex)
     {
         if (talkIndex == talkData[id].Length)
             return null;

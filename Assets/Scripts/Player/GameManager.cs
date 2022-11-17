@@ -16,18 +16,20 @@ public class GameManager : MonoBehaviour
     {
         scanObject = scanObj;
         ObjData objData = scanObject.GetComponent<ObjData>();
+        // Talk(objData.id);
         Talk(objData.id);
-        //talkText.text = "ÀÌ°ÍÀÇ ÀÌ¸§Àº " + scanObject.name + "ÀÌ¶ó°í ÇÑ´Ù.";
+        //talkText.text = "ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ " + scanObject.name + "ï¿½Ì¶ï¿½ï¿½ ï¿½Ñ´ï¿½.";
         talkPanel.SetActive(isAction);
     }
-    void Talk(int id)
+
+    void Talk(string id) // overloading test
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
 
         if(talkData == null)
         {
             isAction = false;
-            talkIndex = 0;  //´ëÈ­ Á¾·á ½Ã ÀÎµ¦½º ÃÊ±âÈ­
+            talkIndex = 0;  //ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
             return;
         }
         talkText.text = talkData;

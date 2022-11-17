@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     GameObject gameoverPopup;
     GameObject pausePopup;
-    public static bool isPausePopup; // ë‹¤ë¥¸ í•¨ìˆ˜ì—ì„œë„ ì‚¬ìš©í•´ì•¼ í•¨
+    public static bool isPausePopup; // ?‹¤ë¥? ?•¨?ˆ˜?—?„œ?„ ?‚¬?š©?•´?•¼ ?•¨
     // Start is called before the first frame update
     void Start()
     {
@@ -34,10 +34,18 @@ public class GameController : MonoBehaviour
             }
         }
         EndTime();
+        RunOutHealth();
     }
 
     void EndTime() {
         if (Timer.rTime <= 0) {
+            Time.timeScale = 0;
+            gameoverPopup.SetActive(true);
+        }
+    }
+
+    void RunOutHealth() {
+        if (Singletone.Instance.playerStats["health"] == 0) {
             Time.timeScale = 0;
             gameoverPopup.SetActive(true);
         }

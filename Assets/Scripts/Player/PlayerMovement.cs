@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         anim.SetInteger("Moveh",(int)h);
         anim.SetInteger("Movev",(int)v);
-
-        //Á¶»ç
+        
+        //ï¿½ï¿½ï¿½ï¿½
         if(v == 1)
         {
             dirVec = Vector3.up;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             dirVec = Vector3.right;
         }
 
-        //Äù½ºÆ®
+        //ï¿½ï¿½ï¿½ï¿½Æ®
         if(Input.GetButtonDown("Jump") && scanObject != null)
         {
             manager.Action(scanObject);
