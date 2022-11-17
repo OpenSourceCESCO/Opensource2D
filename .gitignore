@@ -49,6 +49,10 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+
+# ignore .meta file
+# when pull project, open unity -> auto create
+*.*.meta
 *.meta
 
 # Unity3D generated meta files

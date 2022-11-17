@@ -425,7 +425,6 @@ MonoBehaviour:
   talkText: {fileID: 309367183}
   scanObject: {fileID: 0}
   isAction: 0
-  talkIndex: 0
   talkManager: {fileID: 178262906}
 --- !u!4 &170072382
 Transform:
@@ -5265,7 +5264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198c7818fee0f374f9f5cc1fca6e5e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: "\uC18C\uB140"
+  id: 0
 --- !u!1001 &908696101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14742,7 +14741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198c7818fee0f374f9f5cc1fca6e5e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: "\uAD50\uC218"
+  id: 1
 --- !u!1 &1839218667
 GameObject:
   m_ObjectHideFlags: 0
@@ -14775,7 +14774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198c7818fee0f374f9f5cc1fca6e5e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: "\uBB3C\uCCB4"
+  id: 2
 --- !u!212 &1839218669
 SpriteRenderer:
   m_ObjectHideFlags: 0
