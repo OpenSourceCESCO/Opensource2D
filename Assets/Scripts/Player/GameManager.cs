@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
         scanObject = scanObj;
         ObjData objData = scanObject.GetComponent<ObjData>();
         // Talk(objData.id);
-        Talk(objData.id_);
+        Talk(objData.id);
         //talkText.text = "�̰��� �̸��� " + scanObject.name + "�̶�� �Ѵ�.";
         talkPanel.SetActive(isAction);
     }
