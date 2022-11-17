@@ -15,6 +15,7 @@ public class GameOverFunction : MonoBehaviour
         gameoverPopup.SetActive(false);
         Singletone.Instance.saveData.leftTime = Singletone.Instance.saveData.initTime;
         Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
+        Singletone.Instance.InitUserData();
         SceneManager.LoadScene("MapTest");
     }
 }
