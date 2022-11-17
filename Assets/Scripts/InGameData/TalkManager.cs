@@ -6,12 +6,12 @@ using System;
 
 public class TalkManager : MonoBehaviour
 {
-    Dictionary<string, string[]> talkData;
+    Dictionary<int, string[]> talkData;
     TextDatas textDatas;
 
     [Serializable]
     class TextData {
-        public string id;
+        public int id;
         public string[] text;
     }
 
@@ -21,7 +21,7 @@ public class TalkManager : MonoBehaviour
 
     void Awake()
     {
-        talkData = new Dictionary<string, string[]>();
+        talkData = new Dictionary<int, string[]>();
         GenerateData();
     }
     void GenerateData()
@@ -37,16 +37,10 @@ public class TalkManager : MonoBehaviour
         // talkData.Add(2, new string[] { "정체 모를 무언가.", "개발자 녀석이 테스트를 위해 배치한 듯 하다." });
         // talkData.Add(3, new string[] { "과제는 다했니?", "연구실에 관심있다면 오거라." });
     }
-
-    public string GetTalk(string id, int talkIndex) // overloading. test
+    public string GetTalk(int id, int talkIndex)
     {
-        if (talkIndex == talkData[id].Length) {
-            int rand = UnityEngine.Random.Range(-5, 5);
-            Singletone.Instance.playerStats["mental"] += rand;
-            
+        if (talkIndex == talkData[id].Length)
             return null;
-        }
-            
         else
             return talkData[id][talkIndex];
     }
