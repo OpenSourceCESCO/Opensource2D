@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections.Generic;
 
-[Serializable] // 직렬?��
+[Serializable] // 직렬?��
 public class SaveData
 {
     public float leftTime;
@@ -15,7 +15,8 @@ public class SaveData
     public List<int> statValues = new List<int>();
 }
 
-public class PlayerStat {
+public class PlayerStat
+{
     public string statName;
     public int statValue;
 }

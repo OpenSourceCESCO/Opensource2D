@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     GameObject gameoverPopup;
     GameObject pausePopup;
-    public static bool isPausePopup; // ?‹¤ë¥? ?•¨?ˆ˜?—?„œ?„ ?‚¬?š©?•´?•¼ ?•¨
+    public static bool isPausePopup; // ?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +26,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isPausePopup && !gameoverPopup.activeSelf) {
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (!isPausePopup && !gameoverPopup.activeSelf)
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
                 isPausePopup = true;
                 pausePopup.SetActive(true);
                 Time.timeScale = 0;
@@ -37,21 +39,26 @@ public class GameController : MonoBehaviour
         RunOutHealth();
     }
 
-    void EndTime() {
-        if (Timer.rTime <= 0) {
+    void EndTime()
+    {
+        if (Timer.rTime <= 0)
+        {
             Time.timeScale = 0;
             gameoverPopup.SetActive(true);
         }
     }
 
-    void RunOutHealth() {
-        if (Singletone.Instance.playerStats["health"] == 0) {
+    void RunOutHealth()
+    {
+        if (Singletone.Instance.playerStats["health"] == 0)
+        {
             Time.timeScale = 0;
             gameoverPopup.SetActive(true);
         }
     }
 
-    public static void goMainScene() {
+    public static void goMainScene()
+    {
         SceneManager.LoadScene("StartUI");
     }
 }

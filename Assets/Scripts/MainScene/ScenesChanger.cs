@@ -29,13 +29,15 @@ public class ScenesChanger : MonoBehaviour
         GameObject clickBtn = EventSystem.current.currentSelectedGameObject;
         SceneManager.LoadScene(clickBtn.name);
     }
-    public void OnResumeBtnClick() {
+    public void OnResumeBtnClick()
+    {
         string filePath = Application.persistentDataPath + "/" + gamedataFileName;
-        if (File.Exists(filePath)) {
+        if (File.Exists(filePath))
+        {
             Singletone.Instance.InitUserData();
             Singletone.Instance.LoadGameData();
             SceneManager.LoadScene("MapTest");
-            
+
         }
     }
 }

@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dirVec;
     GameObject scanObject;
 
-    private void Awake() {
-        rigid = GetComponent<Rigidbody2D>();    
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -21,18 +22,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Timer.rTime <= 0) return; // 제한시간이 다 되면 아무런 키도 먹히지 않게 수정
 
-        h = manager.isAction ? 0 :Input.GetAxisRaw("Horizontal");
-        v = manager.isAction ? 0 :Input.GetAxisRaw("Vertical");
+        h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+        v = manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
 
         transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
 
         //Animation
         anim = GetComponent<Animator>();
-        anim.SetInteger("Moveh",(int)h);
-        anim.SetInteger("Movev",(int)v);
-        
+        anim.SetInteger("Moveh", (int)h);
+        anim.SetInteger("Movev", (int)v);
+
         //����
-        if(v == 1)
+        if (v == 1)
         {
             dirVec = Vector3.up;
         }
@@ -50,20 +51,22 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //����Ʈ
-        if(Input.GetButtonDown("Jump") && scanObject != null)
+        if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            if (scanObject.GetComponent<ObjData>().id == "교수" && GameManager.talkIndex == 0) {
+            if (scanObject.GetComponent<ObjData>().id == "교수" && GameManager.talkIndex == 0)
+            {
                 Singletone.Instance.playerStats["mental"] += (int)Random.Range(-5, 5);
             }
             manager.Action(scanObject);
         }
     }
 
-    private void FixedUpdate() {
-        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0,1,0));
+    private void FixedUpdate()
+    {
+        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("QuestLayer"));
 
-        if(rayHit.collider != null)
+        if (rayHit.collider != null)
         {
             scanObject = rayHit.collider.gameObject;
         }
@@ -71,5 +74,5 @@ public class PlayerMovement : MonoBehaviour
         {
             scanObject = null;
         }
-    } 
+    }
 }

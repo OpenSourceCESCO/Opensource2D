@@ -7,7 +7,8 @@ public class TeleportParent : MonoBehaviour
     public float teleportTime = 0f;
     // Start is called before the first frame update
 
-    public float getTeleportTime() {
+    public float getTeleportTime()
+    {
         return teleportTime;
     }
 }

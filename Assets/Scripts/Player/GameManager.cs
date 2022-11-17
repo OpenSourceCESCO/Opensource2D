@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
 
-        if(talkData == null)
+        if (talkData == null)
         {
             isAction = false;
             talkIndex = 0;  //��ȭ ���� �� �ε��� �ʱ�ȭ

@@ -10,12 +10,14 @@ public class TalkManager : MonoBehaviour
     TextDatas textDatas;
 
     [Serializable]
-    class TextData {
+    class TextData
+    {
         public string id;
         public string[] text;
     }
 
-    class TextDatas {
+    class TextDatas
+    {
         public TextData[] data;
     }
 
@@ -30,7 +32,8 @@ public class TalkManager : MonoBehaviour
         string json = File.ReadAllText(filepath);
         textDatas = JsonUtility.FromJson<TextDatas>(json);
 
-        for (int i = 0; i < textDatas.data.Length; i++) {
+        for (int i = 0; i < textDatas.data.Length; i++)
+        {
             talkData.Add(textDatas.data[i].id, textDatas.data[i].text);
         }
         // talkData.Add(1, new string[] { "�ȳ�?", "�� ���� ó�� �Ա���?" });

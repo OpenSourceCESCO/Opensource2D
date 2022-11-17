@@ -27,8 +27,10 @@ public class StatusMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerStat.gameObject.activeSelf) {
-            foreach (KeyValuePair<string, GameObject> item in status) {
+        if (playerStat.gameObject.activeSelf)
+        {
+            foreach (KeyValuePair<string, GameObject> item in status)
+            {
                 item.Value.GetComponent<Text>().text = Singletone.Instance.playerStats[item.Key].ToString();
             }
         }
