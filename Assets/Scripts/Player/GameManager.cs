@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Text talkText;
     public GameObject scanObject;
     public bool isAction;
-    public int talkIndex;
+    public static int talkIndex;
     public TalkManager talkManager;
 
     public void Action(GameObject scanObj)

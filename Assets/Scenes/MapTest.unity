@@ -213,6 +213,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3318002008881911120, guid: 2d5b4f46d57049e4b8d6f120ce0c0d46, type: 3}
+      propertyPath: decHealthFactor
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4095959306576520418, guid: 2d5b4f46d57049e4b8d6f120ce0c0d46, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5230,7 +5234,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198c7818fee0f374f9f5cc1fca6e5e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 1
+  id: "\uC18C\uB140"
 --- !u!1001 &908696101
 PrefabInstance:
   m_ObjectHideFlags: 0

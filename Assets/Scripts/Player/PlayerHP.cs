@@ -5,29 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    Slider playerHP;
-    Transform fillArea;
-
-    float v, h;
-    float factor = 1f;
+    int healthDec = 0;
+    public int decHealthFactor = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerHP = GetComponent<Slider>();
-        fillArea = transform.Find("Fill Area");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerHP.value <= playerHP.minValue)    fillArea.gameObject.SetActive(false);
-        else                                        fillArea.gameObject.SetActive(true);
+        if (Singletone.Instance.playerStats["health"] < 0) return;
+        else if (Singletone.Instance.playerStats["health"] > 100) return;
 
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0) {
-            if (playerHP.value > playerHP.minValue) playerHP.value -= Time.deltaTime * factor;
-        } else {
-            if (playerHP.value < playerHP.maxValue) playerHP.value += Time.deltaTime * factor;
+        if ((int)((Singletone.Instance.saveData.initTime - Timer.rTime)/5) == (healthDec+1)) {
+            Singletone.Instance.playerStats["health"] -= decHealthFactor;
+            healthDec++;
         }
-    }
+    }   
 }

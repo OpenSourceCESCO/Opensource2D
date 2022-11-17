@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Timer.rTime <= 0) return; // 제한시간이 다 되면 아무런 키도 먹히지 않게 수정
+
         h = manager.isAction ? 0 :Input.GetAxisRaw("Horizontal");
         v = manager.isAction ? 0 :Input.GetAxisRaw("Vertical");
 
@@ -50,8 +52,11 @@ public class PlayerMovement : MonoBehaviour
         //����Ʈ
         if(Input.GetButtonDown("Jump") && scanObject != null)
         {
+            if (scanObject.GetComponent<ObjData>().id == "교수" && GameManager.talkIndex == 0) {
+                Singletone.Instance.playerStats["mental"] += (int)Random.Range(-5, 5);
+            }
             manager.Action(scanObject);
-        }    
+        }
     }
 
     private void FixedUpdate() {
