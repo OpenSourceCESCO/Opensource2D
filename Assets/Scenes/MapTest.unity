@@ -5230,7 +5230,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 198c7818fee0f374f9f5cc1fca6e5e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   id: 1
 --- !u!1001 &908696101
 PrefabInstance:
@@ -5322,9 +5321,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6017891871855068453, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
   m_PrefabInstance: {fileID: 908696101}
   m_PrefabAsset: {fileID: 0}
-=======
-  id: "\uC18C\uB140"
->>>>>>> 9ce6782438047e86361f35b7ddd7f55ed6cfd818
 --- !u!1 &943717523
 GameObject:
   m_ObjectHideFlags: 0
