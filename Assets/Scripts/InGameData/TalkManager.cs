@@ -6,13 +6,13 @@ using System;
 
 public class TalkManager : MonoBehaviour
 {
-    Dictionary<string, string[]> talkData;
+    Dictionary<int, string[]> talkData;
     TextDatas textDatas;
 
     [Serializable]
     class TextData
     {
-        public string id;
+        public int id;
         public string[] text;
     }
 
@@ -23,7 +23,7 @@ public class TalkManager : MonoBehaviour
 
     void Awake()
     {
-        talkData = new Dictionary<string, string[]>();
+        talkData = new Dictionary<int, string[]>();
         GenerateData();
     }
     void GenerateData()
@@ -40,7 +40,7 @@ public class TalkManager : MonoBehaviour
         // talkData.Add(2, new string[] { "��ü �� ����.", "������ �༮�� �׽�Ʈ�� ���� ��ġ�� �� �ϴ�." });
         // talkData.Add(3, new string[] { "������ ���ߴ�?", "�����ǿ� �����ִٸ� ���Ŷ�." });
     }
-    public string GetTalk(string id, int talkIndex)
+    public string GetTalk(int id, int talkIndex)
     {
         if (talkIndex == talkData[id].Length)
             return null;

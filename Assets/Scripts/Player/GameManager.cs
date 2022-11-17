@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         talkPanel.SetActive(isAction);
     }
 
-    void Talk(string id) // overloading test
+    void Talk(int id) // overloading test
     {
         string talkData = talkManager.GetTalk(id, talkIndex);
 

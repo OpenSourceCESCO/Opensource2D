@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class ObjData : MonoBehaviour
 {
-    public string id;
+    public int id;
 }
