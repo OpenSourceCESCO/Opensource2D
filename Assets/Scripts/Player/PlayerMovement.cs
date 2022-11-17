@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         //����Ʈ
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
+            print(scanObject.name);
             if (scanObject.GetComponent<ObjData>().id == 1 && GameManager.talkIndex == 0)
             {
                 Singletone.Instance.playerStats["mental"] += (int)Random.Range(-5, 5);

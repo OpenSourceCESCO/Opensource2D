@@ -8,6 +8,7 @@ public class TalkManager : MonoBehaviour
 {
     Dictionary<int, string[]> talkData;
     TextDatas textDatas;
+    string filepath = "Json/talkMessage";
 
     [Serializable]
     class TextData
@@ -28,8 +29,9 @@ public class TalkManager : MonoBehaviour
     }
     void GenerateData()
     {
-        string filepath = "Assets/Resources/Json/talkMessage.json";
-        string json = File.ReadAllText(filepath);
+        
+        // string json = File.ReadAllText(filepath);
+        string json = Resources.Load<TextAsset>(filepath).ToString();
         textDatas = JsonUtility.FromJson<TextDatas>(json);
 
         for (int i = 0; i < textDatas.data.Length; i++)
@@ -42,6 +44,13 @@ public class TalkManager : MonoBehaviour
     }
     public string GetTalk(int id, int talkIndex)
     {
+        if (!talkData.ContainsKey(id))
+        {
+            if (talkIndex == talkData[id - id % 1000].Length)
+                return null;
+            else
+                return talkData[id - id % 1000][talkIndex];
+        }
         if (talkIndex == talkData[id].Length)
             return null;
         else
