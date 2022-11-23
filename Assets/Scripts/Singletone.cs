@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Singletone
 {
@@ -77,5 +78,9 @@ public class Singletone
         File.WriteAllText(filePath, ToJsonData);
 
         // 올바르게 저장됐는지 확인 (자유롭게 변형)
+    }
+
+    public void SceneChanger(string sceneName) {
+        SceneManager.LoadScene(sceneName);
     }
 }

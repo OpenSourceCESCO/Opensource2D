@@ -35,17 +35,7 @@ public class GameController : MonoBehaviour
                 Time.timeScale = 0;
             }
         }
-        EndTime();
         RunOutHealth();
-    }
-
-    void EndTime()
-    {
-        if (Timer.rTime <= 0)
-        {
-            Time.timeScale = 0;
-            gameoverPopup.SetActive(true);
-        }
     }
 
     void RunOutHealth()

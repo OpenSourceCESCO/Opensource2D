@@ -18,7 +18,6 @@ public class PauseFunctions : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         Singletone.Instance.saveData.playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
 
-        Singletone.Instance.saveData.leftTime = Timer.rTime;
         Singletone.Instance.SaveGameData();
     }
 

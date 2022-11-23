@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    int healthDec = 0;
     public int decHealthFactor = 0;
 
     // Start is called before the first frame update
@@ -18,11 +17,5 @@ public class PlayerHP : MonoBehaviour
     {
         if (Singletone.Instance.playerStats["health"] < 0) return;
         else if (Singletone.Instance.playerStats["health"] > 100) return;
-
-        if ((int)((Singletone.Instance.saveData.initTime - Timer.rTime) / 5) == (healthDec + 1))
-        {
-            Singletone.Instance.playerStats["health"] -= decHealthFactor;
-            healthDec++;
-        }
     }
 }

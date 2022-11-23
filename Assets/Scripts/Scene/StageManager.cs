@@ -31,8 +31,6 @@ public class StageManager : MonoBehaviour
         {
             if (activedGrade[i].isOn)
             {
-                Singletone.Instance.saveData.initTime = Int32.Parse(activedGrade[i].name.Substring(0, 1)) * Singletone.Instance.timeFactor;
-                Singletone.Instance.saveData.leftTime = Singletone.Instance.saveData.initTime;
                 Singletone.Instance.saveData.grade = activedGrade[i].name.Substring(0, 1) + "학년";
             }
         }
