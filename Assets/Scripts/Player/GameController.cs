@@ -26,29 +26,14 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isPausePopup && !gameoverPopup.activeSelf)
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                isPausePopup = true;
-                pausePopup.SetActive(true);
-                Time.timeScale = 0;
-            }
-        }
-        RunOutHealth();
-    }
+        if (isPausePopup) return;
+        if (gameoverPopup.activeSelf) return;
 
-    void RunOutHealth()
-    {
-        if (Singletone.Instance.playerStats["health"] == 0)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
+            isPausePopup = true;
+            pausePopup.SetActive(true);
             Time.timeScale = 0;
-            gameoverPopup.SetActive(true);
         }
-    }
-
-    public static void goMainScene()
-    {
-        SceneManager.LoadScene("StartUI");
     }
 }

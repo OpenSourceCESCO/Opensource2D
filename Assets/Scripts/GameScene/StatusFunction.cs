@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatusMenu : MonoBehaviour
+public class StatusFunction : MonoBehaviour
 {
     // Start is called before the first frame update
     Dictionary<string, GameObject> status = new Dictionary<string, GameObject>();
@@ -11,28 +11,44 @@ public class StatusMenu : MonoBehaviour
 
     void Start()
     {
+        Singletone.Instance.InitUserData(); // 테스트용
+        
         playerStat = GameObject.Find("PlayerStat").transform.Find("Background");
         SaveData data = Singletone.Instance.saveData;
         playerStat.Find("NameLayer").Find("UserName").gameObject.GetComponent<Text>().text = string.Format("{0}({1})", data.name, data.gender);
-        playerStat.Find("GradeLayer").Find("UserGradeMAX").gameObject.GetComponent<Text>().text = data.grade;
 
-        status.Add("health", playerStat.Find("HealthLayer").Find("UserHealth").gameObject);
+        status.Add("grade", playerStat.Find("GradeLayer").Find("UserGrade").gameObject);
+        status.Add("weeks", playerStat.Find("GradeLayer").Find("Weeks").gameObject);
+
         status.Add("money", playerStat.Find("MoneyLayer").Find("UserMoney").gameObject);
-        status.Add("friendship", playerStat.Find("FriendshipLayer").Find("UserFriendship").gameObject);
-        status.Add("intel", playerStat.Find("IntelLayer").Find("UserIntel").gameObject);
-        status.Add("emotion", playerStat.Find("EmotionLayer").Find("UserEmotion").gameObject);
-        status.Add("mental", playerStat.Find("MentalLayer").Find("UserMental").gameObject);
+        status.Add("sCommu", playerStat.Find("CommunicationLayer").Find("StudentCommunication").gameObject);
+        status.Add("pCommu", playerStat.Find("CommunicationLayer").Find("ProfessorCommunication").gameObject);
+        status.Add("int", playerStat.Find("IntelLayer").Find("UserIntel").gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (playerStat.gameObject.activeSelf)
+        if (!playerStat.gameObject.activeSelf)
+            return;
+
+        foreach (KeyValuePair<string, GameObject> item in status)
         {
-            foreach (KeyValuePair<string, GameObject> item in status)
-            {
-                item.Value.GetComponent<Text>().text = Singletone.Instance.playerStats[item.Key].ToString();
+            string text = Singletone.Instance.playerStats[item.Key].ToString();
+            switch (item.Key) {
+                case "grade":
+                    text += "학년";
+                    break;
+                case "weeks":
+                    text += "주";
+                    break;
+                case "credit":
+                    continue;
+                default:
+                    break;
             }
+            item.Value.GetComponent<Text>().text = text;
         }
     }
+    
 }

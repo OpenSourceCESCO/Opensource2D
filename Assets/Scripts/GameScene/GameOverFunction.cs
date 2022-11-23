@@ -12,13 +12,12 @@ public class GameOverFunction : MonoBehaviour
         gameoverPopup.SetActive(false);
         Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
         Singletone.Instance.InitUserData();
-        Singletone.Instance.SceneChanger("MapText");
-        // SceneManager.LoadScene("MapTest");
+        Singletone.Instance.SceneChanger("MapTest");
     }
 
     public void OnGoMainBtnClick()
     {
-        GameController.goMainScene();
+        Singletone.Instance.SceneChanger("StartUI");
     }
 
     public void OnExitBtnClick()

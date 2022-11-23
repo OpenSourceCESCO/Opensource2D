@@ -8,13 +8,12 @@ public class SaveData
     public Vector2 playerPos;
     public string name;
     public string gender;
-    public string grade;
     public List<string> statNames = new List<string>();
-    public List<int> statValues = new List<int>();
+    public List<float> statValues = new List<float>();
 }
 
 public class PlayerStat
 {
     public string statName;
-    public int statValue;
+    public float statValue;
 }

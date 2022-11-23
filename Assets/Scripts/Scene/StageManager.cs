@@ -23,17 +23,10 @@ public class StageManager : MonoBehaviour
         Toggle[] activedGender = GameObject.FindGameObjectWithTag("Gender").GetComponentsInChildren<Toggle>();
         for (int i = 0; i < activedGender.Length; i++)
         {
-            if (activedGender[i].isOn) Singletone.Instance.saveData.gender = activedGender[i].name == "Man" ? "남" : "여";
+            if (activedGender[i].isOn) Singletone.Instance.saveData.gender = activedGender[i].name.CompareTo("Man") == 0 ? "남" : "여";
         }
 
         Toggle[] activedGrade = GameObject.FindGameObjectWithTag("Grade").GetComponentsInChildren<Toggle>();
-        for (int i = 0; i < activedGrade.Length; i++)
-        {
-            if (activedGrade[i].isOn)
-            {
-                Singletone.Instance.saveData.grade = activedGrade[i].name.Substring(0, 1) + "학년";
-            }
-        }
 
         Singletone.Instance.saveData.playerPos = new Vector2(0, 0);
 

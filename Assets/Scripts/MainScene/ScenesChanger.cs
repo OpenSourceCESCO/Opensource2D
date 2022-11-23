@@ -10,7 +10,7 @@ public class ScenesChanger : MonoBehaviour
     string gamedataFileName = "GameData.json";
     public void GotoNGStart()
     {
-        Singletone.Instance.SceneChanger("NewGame");
+        Singletone.Instance.SceneChanger("NewGameUI");
     }
     public void GotoMainScene()
     {
