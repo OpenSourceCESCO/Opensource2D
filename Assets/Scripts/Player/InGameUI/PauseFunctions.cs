@@ -5,6 +5,11 @@ using UnityEngine;
 public class PauseFunctions : MonoBehaviour
 {
     public GameObject pausePopup;
+    GameObject player;
+
+    void Start() {
+        player = GameObject.Find("Player");
+    }
 
     public void OnResumeBtnClick()
     {
@@ -15,7 +20,6 @@ public class PauseFunctions : MonoBehaviour
 
     public void OnSaveBtnClick()
     {
-        GameObject player = GameObject.Find("Player");
         Singletone.Instance.saveData.playerPos = new Vector2(player.transform.position.x, player.transform.position.y);
 
         Singletone.Instance.SaveGameData();
@@ -24,7 +28,7 @@ public class PauseFunctions : MonoBehaviour
     public void OnGoMainBtnClick()
     {
         GameController.isPausePopup = !GameController.isPausePopup;
-        GameController.goMainScene();
+        Singletone.Instance.SceneChanger("StartUI");
     }
 
     public void OnExitBtnClick()
