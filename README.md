@@ -54,6 +54,16 @@ public class SaveData {
     public float initTime;
 }
 ```
+* 스크립트 작성 시 중괄호 시작 위치
+```c#
+public static void main()
+{
+  return 0;
+}
+```
+괄호는 유니티 기본 괄호 스타일로 한다.
+
+* [.editorconfig](https://www.lesstif.com/software-architect/editorconfig-maintain-consistent-coding-styles-129008089.html)를 이용하여 코드 인코딩 등 여러 사항을 통일한다.
 
 * * *
 ## 참고 문헌
@@ -85,5 +95,10 @@ public class SaveData {
 * UI에서 버튼 클릭이 안먹힌다면 참고문헌의 *UI에서 버튼 클릭 웨 안댐?* 을 참고하자
 
 * [unity 빌드 실패시 해결방법](https://citynetc.tistory.com/231)
+* 자동 줄 정렬    
+  ctrl+k ctrl+f    
+  - vscode에서 자동 줄 정렬    
+    줄정렬 변경 - settings → word wrap (on : 중괄호가 밑으로 내려감, off : 중괄호가 밑으로 내려가지 않음)
+  - [Visual Studio에서 자동 줄 정렬](https://notstop.co.kr/1026)
 * * *
 ## 여담
