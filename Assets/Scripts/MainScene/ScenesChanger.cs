@@ -10,30 +10,33 @@ public class ScenesChanger : MonoBehaviour
     string gamedataFileName = "GameData.json";
     public void GotoNGStart()
     {
-        SceneManager.LoadScene("NewGameUI");
+        Singletone.Instance.SceneChanger("NewGame");
     }
     public void GotoMainScene()
     {
-        SceneManager.LoadScene("StartUI");
+        Singletone.Instance.SceneChanger("StartUI");
     }
     public void GotoMaptest()
     {
-        SceneManager.LoadScene("MapTest");
+        Singletone.Instance.SceneChanger("MapTest");
     }
     public void GotoSelectScene()
     {
-        SceneManager.LoadScene("MapSelect");
+        Singletone.Instance.SceneChanger("MapSelect");
     }
     public void SelectedMap()
     {
         GameObject clickBtn = EventSystem.current.currentSelectedGameObject;
         SceneManager.LoadScene(clickBtn.name);
     }
-    public void OnResumeBtnClick() {
+    public void OnResumeBtnClick()
+    {
         string filePath = Application.persistentDataPath + "/" + gamedataFileName;
-        if (File.Exists(filePath)) {
+        if (File.Exists(filePath))
+        {
+            Singletone.Instance.InitUserData();
             Singletone.Instance.LoadGameData();
-            SceneManager.LoadScene("MapTest");
+            Singletone.Instance.SceneChanger("MapTest");
         }
     }
 }

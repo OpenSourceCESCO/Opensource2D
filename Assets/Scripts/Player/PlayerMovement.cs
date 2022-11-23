@@ -12,25 +12,27 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dirVec;
     GameObject scanObject;
 
-    private void Awake() {
-        rigid = GetComponent<Rigidbody2D>();    
+    private void Awake()
+    {
+        rigid = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        h = manager.isAction ? 0 :Input.GetAxisRaw("Horizontal");
-        v = manager.isAction ? 0 :Input.GetAxisRaw("Vertical");
+
+        h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
+        v = manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
 
         transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
 
         //Animation
         anim = GetComponent<Animator>();
-        anim.SetInteger("Moveh",(int)h);
-        anim.SetInteger("Movev",(int)v);
+        anim.SetInteger("Moveh", (int)h);
+        anim.SetInteger("Movev", (int)v);
 
-        //Á¶»ç
-        if(v == 1)
+        //ï¿½ï¿½ï¿½ï¿½
+        if (v == 1)
         {
             dirVec = Vector3.up;
         }
@@ -47,18 +49,24 @@ public class PlayerMovement : MonoBehaviour
             dirVec = Vector3.right;
         }
 
-        //Äù½ºÆ®
-        if(Input.GetButtonDown("Jump") && scanObject != null)
+        //ï¿½ï¿½ï¿½ï¿½Æ®
+        if (Input.GetButtonDown("Jump") && scanObject != null)
         {
+            print(scanObject.name);
+            if (scanObject.GetComponent<ObjData>().id == 1 && GameManager.talkIndex == 0)
+            {
+                Singletone.Instance.playerStats["mental"] += (int)Random.Range(-5, 5);
+            }
             manager.Action(scanObject);
-        }    
+        }
     }
 
-    private void FixedUpdate() {
-        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0,1,0));
+    private void FixedUpdate()
+    {
+        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("QuestLayer"));
 
-        if(rayHit.collider != null)
+        if (rayHit.collider != null)
         {
             scanObject = rayHit.collider.gameObject;
         }
@@ -66,5 +74,5 @@ public class PlayerMovement : MonoBehaviour
         {
             scanObject = null;
         }
-    } 
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class Singletone
 {
@@ -12,21 +13,28 @@ public class Singletone
     public Dictionary<string, int> playerStats = new Dictionary<string, int>();
 
     string gamedataFileName = "GameData.json";
-    public static Singletone Instance {
-        get {
+    public static Singletone Instance
+    {
+        get
+        {
             if (instance == null) instance = new Singletone();
             return instance;
         }
     }
-    
+
     // 이 싱글톤 객체의 생성자
-    public Singletone() {
-        playerStats["int"]          = 50;
-        playerStats["health"]       = 50;
-        playerStats["mental"]       = 50;
-        playerStats["friendship"]   = 50;
-        playerStats["emothion"]     = 50;
-        playerStats["money"]        = 1000;
+    public Singletone()
+    {
+    }
+
+    public void InitUserData()
+    {
+        playerStats["intel"] = 50;
+        playerStats["health"] = 50;
+        playerStats["mental"] = 50;
+        playerStats["friendship"] = 50;
+        playerStats["emotion"] = 50;
+        playerStats["money"] = 1000;
     }
 
     // 불러오기
@@ -42,19 +50,22 @@ public class Singletone
             saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
 
             // 딕셔너리를 배열로 바꾸어 저장한 것을 딕셔너리로 재생성
-            for (int i = 0; i < saveData.statNames.Count; i++) {
+            for (int i = 0; i < saveData.statNames.Count; i++)
+            {
                 playerStats[saveData.statNames[i]] = saveData.statValues[i];
             }
         }
     }
-
 
     // 저장하기
     public void SaveGameData()
     {
         // 딕셔너리를 바로 json화 시킬 수 없음.
         // 따라서 배열로 저장한 후, 이 배열을 저장
-        foreach (KeyValuePair<string, int> item in playerStats) {
+        saveData.statNames.Clear();
+        saveData.statValues.Clear();
+        foreach (KeyValuePair<string, int> item in playerStats)
+        {
             saveData.statNames.Add(item.Key);
             saveData.statValues.Add(item.Value);
         }
@@ -67,5 +78,9 @@ public class Singletone
         File.WriteAllText(filePath, ToJsonData);
 
         // 올바르게 저장됐는지 확인 (자유롭게 변형)
+    }
+
+    public void SceneChanger(string sceneName) {
+        SceneManager.LoadScene(sceneName);
     }
 }
