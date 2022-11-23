@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public GameManager manager;
+    public GameObject leftMovement;
     float h, v;
     Rigidbody2D rigid;
     Animator anim;
     Vector3 dirVec;
     GameObject scanObject;
 
+    Slider additionalMove, move;
+    float sliderFactor = 0.08333f;
+
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        additionalMove = leftMovement.transform.Find("AdditionalMove").gameObject.GetComponent<Slider>();
+        move = leftMovement.transform.Find("Move").gameObject.GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -52,10 +59,10 @@ public class PlayerMovement : MonoBehaviour
         //����Ʈ
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            print(scanObject.name);
-            if (scanObject.GetComponent<ObjData>().id == 1 && GameManager.talkIndex == 0)
+            if (GameManager.talkIndex == 0)
             {
-                Singletone.Instance.playerStats["mental"] += (int)Random.Range(-5, 5);
+                if (additionalMove.value > sliderFactor - 0.001) additionalMove.value -= sliderFactor;
+                else if (move.value > sliderFactor - 0.001) move.value -= sliderFactor;
             }
             manager.Action(scanObject);
         }
