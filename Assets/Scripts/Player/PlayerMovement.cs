@@ -7,21 +7,22 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public GameManager manager;
-    public GameObject leftMovement;
     float h, v;
     Rigidbody2D rigid;
     Animator anim;
     Vector3 dirVec;
     GameObject scanObject;
 
-    Slider additionalMove, move;
-    float sliderFactor = 0.08333f;
+    public PlayerLeftMovements leftMove;
+    // public GameObject leftMovement;
+    // Slider additionalMove, move;
+    // float sliderFactor = 0.08333f;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        additionalMove = leftMovement.transform.Find("AdditionalMove").gameObject.GetComponent<Slider>();
-        move = leftMovement.transform.Find("Move").gameObject.GetComponent<Slider>();
+        // additionalMove = leftMovement.transform.Find("AdditionalMove").gameObject.GetComponent<Slider>();
+        // move = leftMovement.transform.Find("Move").gameObject.GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -61,8 +62,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (GameManager.talkIndex == 0)
             {
-                if (additionalMove.value > sliderFactor - 0.001) additionalMove.value -= sliderFactor;
-                else if (move.value > sliderFactor - 0.001) move.value -= sliderFactor;
+                leftMove.ReduceSlider();
+                // if (additionalMove.value > sliderFactor - 0.001) additionalMove.value -= sliderFactor;
+                // else if (move.value > sliderFactor - 0.001) move.value -= sliderFactor;
             }
             manager.Action(scanObject);
         }

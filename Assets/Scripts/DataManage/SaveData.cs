@@ -8,6 +8,10 @@ public class SaveData
     public Vector2 playerPos;
     public string name;
     public string gender;
+    public int currentGrade;
+    public int currentWeek;
+    public int additionalMoveLeft;
+    public int moveLeft;
     public List<string> statNames = new List<string>();
     public List<float> statValues = new List<float>();
 }

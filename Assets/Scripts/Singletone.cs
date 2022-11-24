@@ -8,7 +8,6 @@ public class Singletone
 {
     private static Singletone instance;
     public SaveData saveData = new SaveData();
-    public float timeFactor = 10f;
     public Dictionary<string, float> playerStats = new Dictionary<string, float>();
 
     string gamedataFileName = "GameData.json";
