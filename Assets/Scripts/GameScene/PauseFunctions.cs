@@ -7,13 +7,14 @@ public class PauseFunctions : MonoBehaviour
     public GameObject pausePopup;
     GameObject player;
 
-    void Start() {
+    void Start()
+    {
         player = GameObject.Find("Player");
     }
 
     public void OnResumeBtnClick()
     {
-        GameController.isPausePopup = !GameController.isPausePopup;
+        GameManager.isPausePopup = !GameManager.isPausePopup;
         Time.timeScale = 1;
         pausePopup.SetActive(false);
     }
@@ -27,7 +28,6 @@ public class PauseFunctions : MonoBehaviour
 
     public void OnGoMainBtnClick()
     {
-        GameController.isPausePopup = !GameController.isPausePopup;
         Singletone.Instance.SceneChanger("StartUI");
     }
 

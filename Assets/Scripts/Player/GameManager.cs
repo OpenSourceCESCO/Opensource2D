@@ -8,10 +8,40 @@ public class GameManager : MonoBehaviour
     public GameObject talkPanel;
     public Text talkText;
     public GameObject scanObject;
-    public bool isAction;
-    public static int talkIndex;
+    public bool isTalkAction;
+    public int talkIndex;
     public TalkManager talkManager;
     public InteractionManager itrManager;
+    GameObject gameoverPopup;
+    GameObject pausePopup;
+    public static bool isPausePopup;
+
+    void Start()
+    {
+        Time.timeScale = 1;
+        isPausePopup = false;
+
+        Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
+        gameoverPopup = ingameUI.Find("GameOver").gameObject;
+        pausePopup = ingameUI.Find("Pause").gameObject;
+
+        // Time.timeScale = 1;
+        Vector2 playerInitPos = Singletone.Instance.saveData.playerPos;
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerInitPos.x, playerInitPos.y);
+    }
+
+    void Update()
+    {
+        if (isPausePopup) return;
+        if (gameoverPopup.activeSelf) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPausePopup = true;
+            pausePopup.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 
     public void Action(GameObject scanObj)
     {
@@ -19,7 +49,7 @@ public class GameManager : MonoBehaviour
         ObjData objData = scanObject.GetComponent<ObjData>();
         Talk(objData.id);
         //talkText.text = "�̰��� �̸��� " + scanObject.name + "�̶�� �Ѵ�.";
-        talkPanel.SetActive(isAction);
+        talkPanel.SetActive(isTalkAction);
     }
 
     void Talk(int id) // overloading test
@@ -29,13 +59,13 @@ public class GameManager : MonoBehaviour
 
         if (talkData == null)
         {
-            isAction = false;
+            isTalkAction = false;
             talkIndex = 0;  //��ȭ ���� �� �ε��� �ʱ�ȭ
             itrManager.CheckItr(id);
             return;
         }
         talkText.text = talkData;
-        isAction = true;
+        isTalkAction = true;
         talkIndex++;
     }
 }

@@ -12,7 +12,7 @@ public class StatusFunction : MonoBehaviour
     void Start()
     {
         Singletone.Instance.InitUserData(); // 테스트용
-        
+
         playerStat = GameObject.Find("PlayerStat").transform.Find("Background");
         SaveData data = Singletone.Instance.saveData;
         playerStat.Find("NameLayer").Find("UserName").gameObject.GetComponent<Text>().text = string.Format("{0}({1})", data.name, data.gender);
@@ -35,12 +35,13 @@ public class StatusFunction : MonoBehaviour
         foreach (KeyValuePair<string, GameObject> item in status)
         {
             string text = Singletone.Instance.playerStats[item.Key].ToString();
-            switch (item.Key) {
+            switch (item.Key)
+            {
                 case "grade":
                     text += "학년";
                     break;
                 case "weeks":
-                    text += "주";
+                    text = string.Format("{0,3}주({1,2})", text, int.Parse(text) % 6 == 0 ? "방학" : "학기");
                     break;
                 case "credit":
                     continue;
@@ -50,5 +51,5 @@ public class StatusFunction : MonoBehaviour
             item.Value.GetComponent<Text>().text = text;
         }
     }
-    
+
 }

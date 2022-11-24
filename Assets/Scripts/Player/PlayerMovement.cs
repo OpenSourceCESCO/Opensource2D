@@ -7,30 +7,24 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public GameManager manager;
+    public InteractionManager itrManager;
     float h, v;
     Rigidbody2D rigid;
     Animator anim;
     Vector3 dirVec;
     GameObject scanObject;
-
     public PlayerLeftMovements leftMove;
-    // public GameObject leftMovement;
-    // Slider additionalMove, move;
-    // float sliderFactor = 0.08333f;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        // additionalMove = leftMovement.transform.Find("AdditionalMove").gameObject.GetComponent<Slider>();
-        // move = leftMovement.transform.Find("Move").gameObject.GetComponent<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        h = manager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
-        v = manager.isAction ? 0 : Input.GetAxisRaw("Vertical");
+        h = manager.isTalkAction ? 0 : Input.GetAxisRaw("Horizontal");
+        v = manager.isTalkAction ? 0 : Input.GetAxisRaw("Vertical");
 
         transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
 
@@ -60,13 +54,25 @@ public class PlayerMovement : MonoBehaviour
         //����Ʈ
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            if (GameManager.talkIndex == 0)
+            manager.Action(scanObject);
+            if (manager.talkIndex == 0 && itrManager.itrActionIndex == 0)
             {
                 leftMove.ReduceSlider();
-                // if (additionalMove.value > sliderFactor - 0.001) additionalMove.value -= sliderFactor;
-                // else if (move.value > sliderFactor - 0.001) move.value -= sliderFactor;
             }
-            manager.Action(scanObject);
+        }
+
+        if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
+
+        if (leftMove.moveLeft == 0)
+        {
+            leftMove.InitSliderValue();
+            Singletone.Instance.playerStats["weeks"] += 1;
+
+            if ((Singletone.Instance.playerStats["weeks"] - 1) / 12 == 1)
+            {
+                Singletone.Instance.playerStats["grade"] += 1;
+                Singletone.Instance.playerStats["weeks"] = 1;
+            }
         }
     }
 
