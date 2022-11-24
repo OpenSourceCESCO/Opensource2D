@@ -5627,7 +5627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   manager: {fileID: 170072381}
-  leftMovement: {fileID: 4526538082732140807}
+  leftMove: {fileID: 4526538082732140808}
 --- !u!50 &1432325716
 Rigidbody2D:
   serializedVersion: 4
@@ -15271,8 +15271,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91ec5b65362ce0149bcfae30e8d41d76, type: 3}
---- !u!1 &4526538082732140807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4526538082237827908, guid: 91ec5b65362ce0149bcfae30e8d41d76, type: 3}
+--- !u!114 &4526538082732140808 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4526538082237827905, guid: 91ec5b65362ce0149bcfae30e8d41d76, type: 3}
   m_PrefabInstance: {fileID: 4526538082732140806}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d711b34577949094d9fd18ebdbfef711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
