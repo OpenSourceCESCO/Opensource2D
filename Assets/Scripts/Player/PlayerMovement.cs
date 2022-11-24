@@ -64,15 +64,22 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
             if (leftMove.moveLeft != 0) manager.Action(scanObject);
+            if (manager.talkIndex == 0 && scanObject.GetComponent<ObjData>().id == 2000)
+            {
+                SkipWeeks(scanObject.GetComponent<ObjData>().id);
+                return;
+            }
             if (manager.talkIndex == 0 && itrManager.itrActionIndex == 0)
             {
+                print(string.Format("{0} {1}", leftMove.moveLeft, leftMove.additionalMoveLeft));
+
                 if (leftMove.moveLeft != 0) leftMove.ReduceSlider();
                 else if (leftMove.moveLeft == 0)
                 {
                     // TODO : 상호작용이 불가능하다는 UI 띄우는 코드 실행
 
                     // 대화한 object가 강의실 책상이거나 침대일 경우 실행
-                    SkipWeeks(scanObject);
+                    SkipWeeks(scanObject.GetComponent<ObjData>().id);
                 }
             }
         }
@@ -80,12 +87,18 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
     }
 
-    void SkipWeeks(GameObject scanObject)
+    void SkipWeeks(int objectID)
     {
-        print(string.Format("{0} {1}", weekSkipObject.Contains(scanObject.GetComponent<ObjData>().id), weekSkipObject.Count));
-        if (!weekSkipObject.Contains(scanObject.GetComponent<ObjData>().id)) return;
+        float additionalFactor = 0.7f;
+        print(string.Format("{0} {1}", weekSkipObject.Contains(objectID), weekSkipObject.Count));
+        if (!weekSkipObject.Contains(objectID)) return;
 
-        leftMove.InitSliderValue();
+        // 만약, scanObject가 침대라면 => 현재 남은 행동력의 n%를 다음 추가 행동력으로 할당
+        // 현재 추가 행동력은 합하지 않음
+
+        if (objectID == 2000) leftMove.InitSliderValue(6, (int)(leftMove.moveLeft * additionalFactor));
+        else leftMove.InitSliderValue((int)Random.Range(1, 6), (int)Random.Range(1, 4));
+
         Singletone.Instance.playerStats["weeks"] += 1;
 
         if ((Singletone.Instance.playerStats["weeks"] - 1) / 12 == 1)
