@@ -14,10 +14,19 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dirVec;
     GameObject scanObject;
     public PlayerLeftMovements leftMove;
+    List<int> weekSkipObject;
 
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+
+        weekSkipObject = new List<int>();
+        AddWeekSkipObject();
+    }
+
+    void AddWeekSkipObject()
+    {
+        weekSkipObject.Add(2000);
     }
 
     // Update is called once per frame
@@ -54,25 +63,35 @@ public class PlayerMovement : MonoBehaviour
         //����Ʈ
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            manager.Action(scanObject);
+            if (leftMove.moveLeft != 0) manager.Action(scanObject);
             if (manager.talkIndex == 0 && itrManager.itrActionIndex == 0)
             {
-                leftMove.ReduceSlider();
+                if (leftMove.moveLeft != 0) leftMove.ReduceSlider();
+                else if (leftMove.moveLeft == 0)
+                {
+                    // TODO : 상호작용이 불가능하다는 UI 띄우는 코드 실행
+
+                    // 대화한 object가 강의실 책상이거나 침대일 경우 실행
+                    SkipWeeks(scanObject);
+                }
             }
         }
 
         if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
+    }
 
-        if (leftMove.moveLeft == 0)
+    void SkipWeeks(GameObject scanObject)
+    {
+        print(string.Format("{0} {1}", weekSkipObject.Contains(scanObject.GetComponent<ObjData>().id), weekSkipObject.Count));
+        if (!weekSkipObject.Contains(scanObject.GetComponent<ObjData>().id)) return;
+
+        leftMove.InitSliderValue();
+        Singletone.Instance.playerStats["weeks"] += 1;
+
+        if ((Singletone.Instance.playerStats["weeks"] - 1) / 12 == 1)
         {
-            leftMove.InitSliderValue();
-            Singletone.Instance.playerStats["weeks"] += 1;
-
-            if ((Singletone.Instance.playerStats["weeks"] - 1) / 12 == 1)
-            {
-                Singletone.Instance.playerStats["grade"] += 1;
-                Singletone.Instance.playerStats["weeks"] = 1;
-            }
+            Singletone.Instance.playerStats["grade"] += 1;
+            Singletone.Instance.playerStats["weeks"] = 1;
         }
     }
 
