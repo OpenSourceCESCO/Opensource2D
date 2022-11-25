@@ -24,6 +24,10 @@ public class ScenesChanger : MonoBehaviour
     {
         Singletone.Instance.SceneChanger("MapSelect");
     }
+    public void GotoTutorial()
+    {
+        Singletone.Instance.SceneChanger("Tutorial");
+    }
     public void SelectedMap()
     {
         GameObject clickBtn = EventSystem.current.currentSelectedGameObject;

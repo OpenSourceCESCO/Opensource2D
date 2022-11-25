@@ -15,6 +15,11 @@ TagManager:
   - InGameUI
   - Name
   - Portal
+  - Money
+  - PFriend
+  - OFriend
+  - Intel
+  - GPoint
   layers:
   - Default
   - TransparentFX
