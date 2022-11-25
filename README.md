@@ -55,6 +55,15 @@ public class SaveData {
 }
 ```
 * 스크립트 작성 시 중괄호 시작 위치
+```c#
+public static void main()
+{
+  return 0;
+}
+```
+괄호는 유니티 기본 괄호 스타일로 한다.
+
+* [.editorconfig](https://www.lesstif.com/software-architect/editorconfig-maintain-consistent-coding-styles-129008089.html)를 이용하여 코드 인코딩 등 여러 사항을 통일한다.
 
 * * *
 ## 참고 문헌

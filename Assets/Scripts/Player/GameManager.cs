@@ -8,32 +8,64 @@ public class GameManager : MonoBehaviour
     public GameObject talkPanel;
     public Text talkText;
     public GameObject scanObject;
-    public bool isAction;
+    public bool isTalkAction;
     public int talkIndex;
     public TalkManager talkManager;
+    public InteractionManager itrManager;
+    GameObject gameoverPopup;
+    GameObject pausePopup;
+    public static bool isPausePopup;
+
+    void Start()
+    {
+        Time.timeScale = 1;
+        isPausePopup = false;
+
+        Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
+        gameoverPopup = ingameUI.Find("GameOver").gameObject;
+        pausePopup = ingameUI.Find("Pause").gameObject;
+
+        // Time.timeScale = 1;
+        Vector2 playerInitPos = Singletone.Instance.saveData.playerPos;
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerInitPos.x, playerInitPos.y);
+    }
+
+    void Update()
+    {
+        if (isPausePopup) return;
+        if (gameoverPopup.activeSelf) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPausePopup = true;
+            pausePopup.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 
     public void Action(GameObject scanObj)
     {
         scanObject = scanObj;
         ObjData objData = scanObject.GetComponent<ObjData>();
-        // Talk(objData.id);
         Talk(objData.id);
         //talkText.text = "�̰��� �̸��� " + scanObject.name + "�̶�� �Ѵ�.";
-        talkPanel.SetActive(isAction);
+        talkPanel.SetActive(isTalkAction);
     }
 
-    void Talk(string id) // overloading test
+    void Talk(int id) // overloading test
     {
-        string talkData = talkManager.GetTalk(id, talkIndex);
+        int itrTalkIndex = itrManager.GetItrIndex(id);  //상호작용 index 넘겨주기
+        string talkData = talkManager.GetTalk(id + itrTalkIndex, talkIndex);  //json에 있는 idx를 최종적으로 넘겨주기
 
-        if(talkData == null)
+        if (talkData == null)
         {
-            isAction = false;
+            isTalkAction = false;
             talkIndex = 0;  //��ȭ ���� �� �ε��� �ʱ�ȭ
+            itrManager.CheckItr(id);
             return;
         }
         talkText.text = talkData;
-        isAction = true;
+        isTalkAction = true;
         talkIndex++;
     }
 }
