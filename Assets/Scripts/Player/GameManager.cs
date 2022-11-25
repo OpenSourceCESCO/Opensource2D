@@ -34,6 +34,13 @@ public class GameManager : MonoBehaviour
     {
         if (isPausePopup) return;
         if (gameoverPopup.activeSelf) return;
+        if (isTalkAction) return;
+
+        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
+        {
+            
+            gameoverPopup.SetActive(true);
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {

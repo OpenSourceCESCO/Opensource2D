@@ -15,6 +15,16 @@ public class PlayerMovement : MonoBehaviour
     GameObject scanObject;
     public PlayerLeftMovements leftMove;
     List<int> weekSkipObject;
+    EndingFlags ending;
+    GameObject pausePopup;
+    GameObject gameoverPopup;
+
+    void Start()
+    {
+        Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
+        pausePopup = ingameUI.Find("Pause").gameObject;
+        gameoverPopup = ingameUI.Find("GameOver").gameObject;
+    }
 
     private void Awake()
     {
@@ -22,6 +32,8 @@ public class PlayerMovement : MonoBehaviour
 
         weekSkipObject = new List<int>();
         AddWeekSkipObject();
+
+        ending = new EndingFlags();
     }
 
     void AddWeekSkipObject()
@@ -31,6 +43,24 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (pausePopup.activeSelf) return;
+        if (gameoverPopup.activeSelf) return;
+
+        // 플레이어의 이동 키 가져옴
+        GetKeyOfPlayerMove();
+        //����Ʈ
+        IsPlayerOnTalk();
+
+        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
+        {
+            ending.ShowEndings(gameoverPopup);
+        }
+
+        if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
+    }
+
+    void GetKeyOfPlayerMove()
     {
         h = manager.isTalkAction ? 0 : Input.GetAxisRaw("Horizontal");
         v = manager.isTalkAction ? 0 : Input.GetAxisRaw("Vertical");
@@ -42,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("Moveh", (int)h);
         anim.SetInteger("Movev", (int)v);
 
-        //占쏙옙占쏙옙
+        //����
         if (v == 1)
         {
             dirVec = Vector3.up;
@@ -59,8 +89,10 @@ public class PlayerMovement : MonoBehaviour
         {
             dirVec = Vector3.right;
         }
+    }
 
-        //占쏙옙占쏙옙트
+    void IsPlayerOnTalk()
+    {
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
             if (leftMove.moveLeft != 0) manager.Action(scanObject);
@@ -76,15 +108,13 @@ public class PlayerMovement : MonoBehaviour
                 if (leftMove.moveLeft != 0) leftMove.ReduceSlider();
                 else if (leftMove.moveLeft == 0)
                 {
-                    // TODO : �긽�샇�옉�슜�씠 遺덇���뒫�븯�떎�뒗 UI �쓣�슦�뒗 肄붾뱶 �떎�뻾
+                    // TODO : 상호작용이 불가능하다는 UI 띄우는 코드 실행
 
-                    // ����솕�븳 object媛� 媛뺤쓽�떎 梨낆긽�씠嫄곕굹 移⑤���씪 寃쎌슦 �떎�뻾
+                    // 대화한 object가 강의실 책상이거나 침대일 경우 실행
                     SkipWeeks(scanObject.GetComponent<ObjData>().id);
                 }
             }
         }
-
-        if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test�슜�룄
     }
 
     void SkipWeeks(int objectID)
@@ -93,8 +123,8 @@ public class PlayerMovement : MonoBehaviour
         print(string.Format("{0} {1}", weekSkipObject.Contains(objectID), weekSkipObject.Count));
         if (!weekSkipObject.Contains(objectID)) return;
 
-        // 留뚯빟, scanObject媛� 移⑤���씪硫� => �쁽�옱 �궓��� �뻾�룞�젰�쓽 n%瑜� �떎�쓬 異붽�� �뻾�룞�젰�쑝濡� �븷�떦
-        // �쁽�옱 異붽�� �뻾�룞�젰��� �빀�븯吏� �븡�쓬
+        // 만약, scanObject가 침대라면 => 현재 남은 행동력의 n%를 다음 추가 행동력으로 할당
+        // 현재 추가 행동력은 합하지 않음
 
         if (objectID == 2000) leftMove.InitSliderValue(6, (int)(leftMove.moveLeft * additionalFactor));
         else leftMove.InitSliderValue((int)Random.Range(1, 6), (int)Random.Range(1, 4));

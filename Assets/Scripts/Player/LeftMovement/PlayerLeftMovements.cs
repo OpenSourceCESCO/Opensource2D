@@ -9,7 +9,6 @@ public class PlayerLeftMovements : MonoBehaviour
 
     Slider additionalMove, move;
     float sliderFactor = 0.08333f;
-    int initMoveValue = 6;
     public int additionalMoveLeft = 4;
     public int moveLeft = 2;
 
@@ -22,11 +21,11 @@ public class PlayerLeftMovements : MonoBehaviour
 
         InitSliderValue();
         // 회전 시 모양이 이상하게 변하여 해결할때 까지는 임시보류
-/*         if (moveLeft < initMoveValue)
-        { // 기본 행동력이 까임에 따라 추가 행동력의 위치 변화
-            additionalMove.transform.Rotate(new Vector3(0, 0, 30 * (initMoveValue - moveLeft)));
-        }  */
-       
+        /*         if (moveLeft < initMoveValue)
+                { // 기본 행동력이 까임에 따라 추가 행동력의 위치 변화
+                    additionalMove.transform.Rotate(new Vector3(0, 0, 30 * (initMoveValue - moveLeft)));
+                }  */
+
     }
 
     // Update is called once per frame
