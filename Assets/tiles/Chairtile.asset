@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Chairtile
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 20544565, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+  m_DefaultSprite: {fileID: 702907400, guid: 152f86f43ce049044b002b4ff5d67bd9, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules: []

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: Greantile
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 1217342612, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+  m_DefaultSprite: {fileID: -169576428, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
   m_DefaultGameObject: {fileID: 0}
   m_DefaultColliderType: 1
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
-    - {fileID: 1217342612, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+    - {fileID: -1443772749, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -39,7 +39,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 1
     m_Sprites:
-    - {fileID: -1843596812, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+    - {fileID: 247007856, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 2
     m_Sprites:
-    - {fileID: 465355684, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+    - {fileID: -358287542, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -81,7 +81,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 3
     m_Sprites:
-    - {fileID: 731008253, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+    - {fileID: -99379315, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 4
     m_Sprites:
-    - {fileID: 1051672370, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+    - {fileID: -169576428, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -117,7 +117,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 5
     m_Sprites:
-    - {fileID: 459472787, guid: 672df2c35b9caa74cba89e73e164cdca, type: 3}
+    - {fileID: -1616149488, guid: 7de69f63980441b4dbf21e779c6bf319, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
