@@ -77,9 +77,14 @@ public static void main()
   - [텔레포트 기능](https://youtu.be/9JvZwMmEydQ)
   - [GameObject는 비활성화된 object를 못찾는다](https://prosto.tistory.com/147)
   - [싱글톤 사용법](https://glikmakesworld.tistory.com/2)
+  - [FOV를 구현해보자 - boxcollider 필수](https://youtu.be/OQ1dRX5NyM0)
+  - [미니맵 구현](https://ncube-studio.tistory.com/40)
 * 세이브 데이터 저장
   - [c# JsonUtility로 json 파싱](https://bloodstrawberry.tistory.com/754)
   - [유니티에서 딕셔너리를 json으로 저장하는 법](https://timeboxstory.tistory.com/138)
+* 에셋
+  - [sunnyside](https://danieldiggle.itch.io/sunnyside)
+  - [TopDown 2D RPG BE](https://assetstore.unity.com/packages/2d/characters/top-down-2d-rpg-assets-pack-188718)
 
 * * *
 ## 팁
