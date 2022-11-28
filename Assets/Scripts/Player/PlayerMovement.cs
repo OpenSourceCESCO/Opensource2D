@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
+            print(scanObject.name);
             try
             {
                 if (leftMove.moveLeft != 0) manager.Action(scanObject);
@@ -127,7 +128,8 @@ public class PlayerMovement : MonoBehaviour
     {
         switch (eObjects.eventableObject[objectID])
         {
-            case "bed":
+            case "homeDesk":
+                Singletone.Instance.playerStats["int"] += (int)Random.Range(-1, 2);
                 break;
             case "professor":
                 Singletone.Instance.playerStats["pCommu"] += (int)Random.Range(-1, 3);

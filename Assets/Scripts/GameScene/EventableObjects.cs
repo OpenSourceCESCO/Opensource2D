@@ -32,6 +32,7 @@ public class EventableObjects
     void AddEventableObject()
     {
         eventableObject.Add(-1, "bed");
+        eventableObject.Add(-2, "homeDesk");
         eventableObject.Add(1000, "girl");
         eventableObject.Add(2000, "gem");
         eventableObject.Add(3000, "professor");
