@@ -8,10 +8,13 @@ public class CameraMove : MonoBehaviour
 
     // public GameObject player;
     GameObject player;
-
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+
+        GameObject spawnPoint = GameObject.Find("SpawnPoint");
+        Vector3 t = spawnPoint.transform.position;
+        transform.position = new Vector3(t.x, t.y, transform.position.z);
     }
 
     private void Update()
