@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatusFunction : MonoBehaviour
+public class StatusPannelFunction : MonoBehaviour
 {
     // Start is called before the first frame update
     Dictionary<string, GameObject> status = new Dictionary<string, GameObject>();
@@ -24,6 +24,7 @@ public class StatusFunction : MonoBehaviour
         status.Add("sCommu", playerStat.Find("CommunicationLayer").Find("StudentCommunication").gameObject);
         status.Add("pCommu", playerStat.Find("CommunicationLayer").Find("ProfessorCommunication").gameObject);
         status.Add("int", playerStat.Find("IntelLayer").Find("UserIntel").gameObject);
+        status.Add("credit", playerStat.Find("CreditLayer").Find("UserCredit").gameObject);
     }
 
     // Update is called once per frame
@@ -44,7 +45,8 @@ public class StatusFunction : MonoBehaviour
                     text = string.Format("{0,3}주({1,2})", text, int.Parse(text) % 6 == 0 ? "방학" : "학기");
                     break;
                 case "credit":
-                    continue;
+                    text = string.Format("{0} / {1}", text, "4.5");
+                    break;
                 default:
                     break;
             }
