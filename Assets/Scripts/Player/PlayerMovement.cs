@@ -14,13 +14,17 @@ public class PlayerMovement : MonoBehaviour
     Vector3 dirVec;
     GameObject scanObject;
     public PlayerLeftMovements leftMove;
-    List<int> weekSkipObject;
+    EventableObjects eObjects;
     EndingFlags ending;
     GameObject pausePopup;
     GameObject gameoverPopup;
 
+    GameObject spawnPoint;
     void Start()
     {
+        spawnPoint = GameObject.Find("SpawnPoint");
+        transform.position = spawnPoint.transform.position;
+
         Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
         pausePopup = ingameUI.Find("Pause").gameObject;
         gameoverPopup = ingameUI.Find("GameOver").gameObject;
@@ -29,16 +33,8 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-
-        weekSkipObject = new List<int>();
-        AddWeekSkipObject();
-
+        eObjects = new EventableObjects();
         ending = new EndingFlags();
-    }
-
-    void AddWeekSkipObject()
-    {
-        weekSkipObject.Add(2000);
     }
 
     // Update is called once per frame
@@ -95,17 +91,27 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            if (leftMove.moveLeft != 0) manager.Action(scanObject);
-            if (manager.talkIndex == 0 && scanObject.GetComponent<ObjData>().id == 2000)
+            try
+            {
+                if (leftMove.moveLeft != 0) manager.Action(scanObject);
+            }
+            catch
+            {
+
+            }
+            if (manager.talkIndex == 0 && scanObject.GetComponent<ObjData>().id == -1)
             {
                 SkipWeeks(scanObject.GetComponent<ObjData>().id);
                 return;
             }
             if (manager.talkIndex == 0 && itrManager.itrActionIndex == 0)
             {
-                print(string.Format("{0} {1}", leftMove.moveLeft, leftMove.additionalMoveLeft));
 
-                if (leftMove.moveLeft != 0) leftMove.ReduceSlider();
+                if (leftMove.moveLeft != 0)
+                {
+                    AdjustStats(scanObject.GetComponent<ObjData>().id);
+                    leftMove.ReduceSlider();
+                }
                 else if (leftMove.moveLeft == 0)
                 {
                     // TODO : 상호작용이 불가능하다는 UI 띄우는 코드 실행
@@ -117,17 +123,49 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void SkipWeeks(int objectID)
+    void AdjustStats(int objectID)
+    {
+        switch (eObjects.eventableObject[objectID])
+        {
+            case "bed":
+                break;
+            case "professor":
+                Singletone.Instance.playerStats["pCommu"] += (int)Random.Range(-1, 3);
+                Singletone.Instance.playerStats["int"] += (int)Random.Range(1, 3);
+                break;
+            case "girl":
+                Singletone.Instance.playerStats["sCommu"] += (int)Random.Range(-1, 3);
+                Singletone.Instance.playerStats["int"] += (int)Random.Range(0, 1);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void RecoverStrength(int objectID)
     {
         float additionalFactor = 0.7f;
-        print(string.Format("{0} {1}", weekSkipObject.Contains(objectID), weekSkipObject.Count));
-        if (!weekSkipObject.Contains(objectID)) return;
-
         // 만약, scanObject가 침대라면 => 현재 남은 행동력의 n%를 다음 추가 행동력으로 할당
         // 현재 추가 행동력은 합하지 않음
+        switch (eObjects.weekSkipObject[objectID])
+        {
+            case "bed":
+                leftMove.InitSliderValue(6, (int)(leftMove.moveLeft * additionalFactor));
+                break;
+            case "professor":
+                leftMove.InitSliderValue(6);
+                break;
+            default:
+                break;
+        }
+    }
 
-        if (objectID == 2000) leftMove.InitSliderValue(6, (int)(leftMove.moveLeft * additionalFactor));
-        else leftMove.InitSliderValue((int)Random.Range(1, 6), (int)Random.Range(1, 4));
+    void SkipWeeks(int objectID)
+    {
+        print(string.Format("{0} {1}", eObjects.IsInSkipObject(objectID), eObjects.weekSkipObject.Count));
+        if (!eObjects.IsInSkipObject(objectID)) return;
+
+        RecoverStrength(objectID);
 
         Singletone.Instance.playerStats["weeks"] += 1;
 
@@ -136,6 +174,8 @@ public class PlayerMovement : MonoBehaviour
             Singletone.Instance.playerStats["grade"] += 1;
             Singletone.Instance.playerStats["weeks"] = 1;
         }
+
+        transform.position = spawnPoint.transform.position;
     }
 
     private void FixedUpdate()

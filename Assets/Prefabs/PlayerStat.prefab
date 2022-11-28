@@ -603,7 +603,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &8998040408099621731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 634622242121129915}
   - component: {fileID: 4349767284086188359}
   m_Layer: 5
-  m_Name: Tag
+  m_Name: TextProcessorCommunication
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1404,7 +1404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8515384744926308578
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 749332056612680056}
   - component: {fileID: 4374084239141260599}
   m_Layer: 5
-  m_Name: GradePoint
+  m_Name: Credit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1617,7 +1617,7 @@ GameObject:
   - component: {fileID: 6908647740213910433}
   - component: {fileID: 7858048179131333591}
   m_Layer: 5
-  m_Name: UserGPoint
+  m_Name: UserCredit
   m_TagString: GPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1697,7 +1697,7 @@ GameObject:
   - component: {fileID: 7770536793046864059}
   - component: {fileID: 9133716407026025122}
   m_Layer: 5
-  m_Name: Tag
+  m_Name: TextStudentCommunication
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1935,7 +1935,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5496916691694841401}
   m_Layer: 5
-  m_Name: GpointLayer
+  m_Name: CreditLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
