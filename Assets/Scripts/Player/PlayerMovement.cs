@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject gameoverPopup;
 
     GameObject spawnPoint;
+
     void Start()
     {
         spawnPoint = GameObject.Find("SpawnPoint");
@@ -91,15 +93,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            print(scanObject.name);
-            try
-            {
-                if (leftMove.moveLeft != 0) manager.Action(scanObject);
-            }
-            catch
-            {
-
-            }
+            // if (eObjects.IsInSkipObject(scanObject.GetComponent<ObjData>().id)) {
+            //     transform.Find("Dialogue System").GetComponent<DialogueRunner>().StartDialogue("SkipWeek");
+            //     return;
+            // }
             if (manager.talkIndex == 0 && scanObject.GetComponent<ObjData>().id == -1)
             {
                 SkipWeeks(scanObject.GetComponent<ObjData>().id);
@@ -120,6 +117,14 @@ public class PlayerMovement : MonoBehaviour
                     // 대화한 object가 강의실 책상이거나 침대일 경우 실행
                     SkipWeeks(scanObject.GetComponent<ObjData>().id);
                 }
+            }
+            try
+            {
+                if (leftMove.moveLeft != 0) manager.Action(scanObject);
+            }
+            catch
+            {
+
             }
         }
     }
@@ -164,7 +169,6 @@ public class PlayerMovement : MonoBehaviour
 
     void SkipWeeks(int objectID)
     {
-        print(string.Format("{0} {1}", eObjects.IsInSkipObject(objectID), eObjects.weekSkipObject.Count));
         if (!eObjects.IsInSkipObject(objectID)) return;
 
         RecoverStrength(objectID);

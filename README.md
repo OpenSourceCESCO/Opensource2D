@@ -85,6 +85,10 @@ public static void main()
 * 에셋
   - [sunnyside](https://danieldiggle.itch.io/sunnyside)
   - [TopDown 2D RPG BE](https://assetstore.unity.com/packages/2d/characters/top-down-2d-rpg-assets-pack-188718)
+  - [Yarn Spinner](https://docs.yarnspinner.dev/)
+* 폰트
+  - [maplestory 폰트](https://maplestory.nexon.com/Media/Font)
+  - 
 
 * * *
 ## 팁
