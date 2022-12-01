@@ -22,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
     GameObject spawnPoint;
 
+    Transform dialogueSystem;
+    bool isSkipWeek;
+
     void Start()
     {
         spawnPoint = GameObject.Find("SpawnPoint");
@@ -30,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
         Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
         pausePopup = ingameUI.Find("Pause").gameObject;
         gameoverPopup = ingameUI.Find("GameOver").gameObject;
+
+        dialogueSystem = GameObject.Find("DSParent").transform.Find("Dialogue System");
+        dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning = false;
     }
 
     private void Awake()
@@ -37,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         eObjects = new EventableObjects();
         ending = new EndingFlags();
+
+        isSkipWeek = false;
     }
 
     // Update is called once per frame
@@ -45,10 +53,28 @@ public class PlayerMovement : MonoBehaviour
         if (pausePopup.activeSelf) return;
         if (gameoverPopup.activeSelf) return;
 
+
+
+        if (dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning)
+        {
+            return;
+        }
+        else
+        {
+            dialogueSystem.GetComponent<DialogueRunner>().Stop();
+        }
+
+        if (isSkipWeek)
+        {
+            isSkipWeek = false;
+            SkipWeeks(-1);
+            return;
+        }
+
         // 플레이어의 이동 키 가져옴
         GetKeyOfPlayerMove();
         //����Ʈ
-        IsPlayerOnTalk();
+        PlayerTalk();
 
         if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
         {
@@ -56,6 +82,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
+    }
+
+    public void GetSkipWeekFlag()
+    {
+        dialogueSystem.GetComponent<InMemoryVariableStorage>().TryGetValue<bool>("$skipWeek", out isSkipWeek);
     }
 
     void GetKeyOfPlayerMove()
@@ -89,33 +120,36 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void IsPlayerOnTalk()
+    void PlayerTalk()
     {
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            // if (eObjects.IsInSkipObject(scanObject.GetComponent<ObjData>().id)) {
-            //     transform.Find("Dialogue System").GetComponent<DialogueRunner>().StartDialogue("SkipWeek");
-            //     return;
-            // }
-            if (manager.talkIndex == 0 && scanObject.GetComponent<ObjData>().id == -1)
+            if (eObjects.IsInSkipObject(scanObject.GetComponent<ObjData>().id) && !dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning)
             {
-                SkipWeeks(scanObject.GetComponent<ObjData>().id);
+                switch (eObjects.weekSkipObject[scanObject.GetComponent<ObjData>().id])
+                {
+                    case "bed":
+                        dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("SkipWeek");
+                        break;
+                    case "professor":
+                        dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Professor");
+                        break;
+                    default:
+                        break;
+                }
+                isSkipWeek = false;
                 return;
             }
-            if (manager.talkIndex == 0 && itrManager.itrActionIndex == 0)
+            // legacy script data
+            if (manager.talkIndex == 0)
             {
-
-                if (leftMove.moveLeft != 0)
+                if (itrManager.itrActionIndex == 0)
                 {
-                    AdjustStats(scanObject.GetComponent<ObjData>().id);
-                    leftMove.ReduceSlider();
-                }
-                else if (leftMove.moveLeft == 0)
-                {
-                    // TODO : 상호작용이 불가능하다는 UI 띄우는 코드 실행
-
-                    // 대화한 object가 강의실 책상이거나 침대일 경우 실행
-                    SkipWeeks(scanObject.GetComponent<ObjData>().id);
+                    if (leftMove.moveLeft != 0)
+                    {
+                        AdjustStats(scanObject.GetComponent<ObjData>().id);
+                        leftMove.ReduceSlider();
+                    }
                 }
             }
             try
