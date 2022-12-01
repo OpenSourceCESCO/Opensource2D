@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     GameObject spawnPoint;
 
     Transform dialogueSystem;
-    bool isSkipWeek;
+    GetValueInScripts yarnValueGetter;
 
     void Start()
     {
@@ -36,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
 
         dialogueSystem = GameObject.Find("DSParent").transform.Find("Dialogue System");
         dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning = false;
+
+        yarnValueGetter = dialogueSystem.GetComponent<GetValueInScripts>();
     }
 
     private void Awake()
@@ -43,8 +45,6 @@ public class PlayerMovement : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         eObjects = new EventableObjects();
         ending = new EndingFlags();
-
-        isSkipWeek = false;
     }
 
     // Update is called once per frame
@@ -52,8 +52,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (pausePopup.activeSelf) return;
         if (gameoverPopup.activeSelf) return;
-
-
 
         if (dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning)
         {
@@ -64,10 +62,19 @@ public class PlayerMovement : MonoBehaviour
             dialogueSystem.GetComponent<DialogueRunner>().Stop();
         }
 
-        if (isSkipWeek)
+        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
         {
-            isSkipWeek = false;
-            SkipWeeks(-1);
+            ending.ShowEndings(gameoverPopup);
+        }
+
+        if (yarnValueGetter.isSkipWeek)
+        {
+            SkipWeeks(scanObject.GetComponent<ObjData>().id);
+            return;
+        }
+        if (yarnValueGetter.isTalkEnd)
+        {
+            AdjustStats(scanObject.GetComponent<ObjData>().id);
             return;
         }
 
@@ -76,17 +83,12 @@ public class PlayerMovement : MonoBehaviour
         //����Ʈ
         PlayerTalk();
 
-        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
-        {
-            ending.ShowEndings(gameoverPopup);
-        }
-
         if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
     }
 
     public void GetSkipWeekFlag()
     {
-        dialogueSystem.GetComponent<InMemoryVariableStorage>().TryGetValue<bool>("$skipWeek", out isSkipWeek);
+        yarnValueGetter.GetSkipWeekFlag();
     }
 
     void GetKeyOfPlayerMove()
@@ -124,47 +126,66 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && scanObject != null)
         {
-            if (eObjects.IsInSkipObject(scanObject.GetComponent<ObjData>().id) && !dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning)
+            if (!dialogueSystem.GetComponent<DialogueRunner>().IsDialogueRunning)
             {
-                switch (eObjects.weekSkipObject[scanObject.GetComponent<ObjData>().id])
+                if (eObjects.IsInSkipObject(scanObject.GetComponent<ObjData>().id))
                 {
-                    case "bed":
-                        dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("SkipWeek");
-                        break;
-                    case "professor":
-                        dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Professor");
-                        break;
-                    default:
-                        break;
-                }
-                isSkipWeek = false;
-                return;
-            }
-            // legacy script data
-            if (manager.talkIndex == 0)
-            {
-                if (itrManager.itrActionIndex == 0)
-                {
-                    if (leftMove.moveLeft != 0)
+                    switch (eObjects.weekSkipObject[scanObject.GetComponent<ObjData>().id])
                     {
-                        AdjustStats(scanObject.GetComponent<ObjData>().id);
-                        leftMove.ReduceSlider();
+                        case "bed":
+                            dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("SkipWeek");
+                            break;
+                        case "professor":
+                            dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Professor");
+                            break;
+                        default:
+                            break;
                     }
+                    yarnValueGetter.isSkipWeek = false;
+                    return;
+                }
+                if (leftMove.moveLeft > 0)
+                {
+                    switch (eObjects.eventableObject[scanObject.GetComponent<ObjData>().id])
+                    {
+                        case "girl":
+                            dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("NPCGirlTalk");
+                            break;
+                        case "gem":
+                            dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Quest_object");
+                            break;
+                        default:
+                            break;
+                    }
+                    return;
                 }
             }
-            try
-            {
-                if (leftMove.moveLeft != 0) manager.Action(scanObject);
-            }
-            catch
-            {
+            /*             // legacy script data
+                                    if (manager.talkIndex == 0)
+                                    {
+                                        if (itrManager.itrActionIndex == 0)
+                                        {
+                                            if (leftMove.moveLeft != 0)
+                                            {
+                                                AdjustStats(scanObject.GetComponent<ObjData>().id);
+                                                leftMove.ReduceSlider();
+                                            }
+                                        }
+                                    }
+                                    try
+                                    {
+                                        if (leftMove.moveLeft != 0) manager.Action(scanObject);
+                                    }
+                                    catch
+                                    {
 
-            }
+                                    } */
         }
     }
 
     void AdjustStats(int objectID)
     {
+        if (!yarnValueGetter.isTalkEnd) return;
         switch (eObjects.eventableObject[objectID])
         {
             case "homeDesk":
@@ -179,15 +200,18 @@ public class PlayerMovement : MonoBehaviour
                 Singletone.Instance.playerStats["int"] += (int)Random.Range(0, 1);
                 break;
             default:
-                break;
+                return;
         }
+        yarnValueGetter.isTalkEnd = false;
+        leftMove.ReduceSlider();
     }
 
-    void RecoverStrength(int objectID)
+    void SkipWeeks(int objectID)
     {
         float additionalFactor = 0.7f;
-        // 만약, scanObject가 침대라면 => 현재 남은 행동력의 n%를 다음 추가 행동력으로 할당
-        // 현재 추가 행동력은 합하지 않음
+        if (!eObjects.IsInSkipObject(objectID)) return;
+        if (!yarnValueGetter.isSkipWeek) return;
+
         switch (eObjects.weekSkipObject[objectID])
         {
             case "bed":
@@ -199,13 +223,6 @@ public class PlayerMovement : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    void SkipWeeks(int objectID)
-    {
-        if (!eObjects.IsInSkipObject(objectID)) return;
-
-        RecoverStrength(objectID);
 
         Singletone.Instance.playerStats["weeks"] += 1;
 
@@ -216,6 +233,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position = spawnPoint.transform.position;
+        yarnValueGetter.isSkipWeek = false;
     }
 
     private void FixedUpdate()

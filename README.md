@@ -82,13 +82,15 @@ public static void main()
 * 세이브 데이터 저장
   - [c# JsonUtility로 json 파싱](https://bloodstrawberry.tistory.com/754)
   - [유니티에서 딕셔너리를 json으로 저장하는 법](https://timeboxstory.tistory.com/138)
+* 스크립트 관련
+  - [Yarn Spinner tutorial](https://youtu.be/CJu0ObGDQHY)
 * 에셋
   - [sunnyside](https://danieldiggle.itch.io/sunnyside)
   - [TopDown 2D RPG BE](https://assetstore.unity.com/packages/2d/characters/top-down-2d-rpg-assets-pack-188718)
   - [Yarn Spinner](https://docs.yarnspinner.dev/)
 * 폰트
   - [maplestory 폰트](https://maplestory.nexon.com/Media/Font)
-  - 
+  - [TextMeshPro 한글 깨짐](https://blockdmask.tistory.com/590)
 
 * * *
 ## 팁
