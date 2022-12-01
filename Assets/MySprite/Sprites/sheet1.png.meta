@@ -4615,9 +4615,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 136
+        y: 153
         width: 16
-        height: 33
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -4658,7 +4658,7 @@ TextureImporter:
         serializedVersion: 2
         x: 51
         y: 153
-        width: 20
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -5162,9 +5162,9 @@ TextureImporter:
         serializedVersion: 2
         x: 34
         y: 137
-        width: 16
+        width: 17
         height: 9
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -10217,6 +10217,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: sheet1_481
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 136
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366dcc7430dedf2488e690e5305deb93
+      internalID: 412571663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sheet1_482
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 153
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b5b5d3661f5dc48a8a1d6418e3ab3e
+      internalID: -1723618861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -10398,6 +10440,7 @@ TextureImporter:
       sheet1_252: -534088878
       sheet1_426: -642958167
       sheet1_407: -1298745047
+      sheet1_482: -1723618861
       sheet1_320: -1360192880
       sheet1_112: 26178028
       sheet1_331: -577692650
@@ -10458,6 +10501,7 @@ TextureImporter:
       sheet1_468: -146842801
       sheet1_398: 1610081608
       sheet1_19: 1923507352
+      sheet1_481: 412571663
       sheet1_261: 1873952762
       sheet1_211: 1004426383
       sheet1_244: 424319831
