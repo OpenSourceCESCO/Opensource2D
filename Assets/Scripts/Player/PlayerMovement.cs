@@ -93,9 +93,22 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(new Vector2(h, v) * Time.deltaTime * speed);
 
         //Animation
-        anim = GetComponent<Animator>();
+        /*anim = GetComponent<Animator>();
         anim.SetInteger("Moveh", (int)h);
-        anim.SetInteger("Movev", (int)v);
+        anim.SetInteger("Movev", (int)v);*/
+
+        anim = GetComponent<Animator>();
+        if (anim.GetInteger("Moveh") != h) {
+            anim.SetBool("Flag", true);
+            anim.SetInteger("Moveh", (int)h);
+        }
+        else if (anim.GetInteger("Movev") != v) {
+            anim.SetBool("Flag", true);
+            anim.SetInteger("Movev", (int)v);
+        }
+        else {
+            anim.SetBool("Flag", false);
+        }
 
         //Raycast Vector
         if (v == 1)
