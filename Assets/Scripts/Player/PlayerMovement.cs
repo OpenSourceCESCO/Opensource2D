@@ -9,17 +9,16 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public GameManager manager;
     public InteractionManager itrManager;
+    public PlayerLeftMovements leftMove;
     float h, v;
     Rigidbody2D rigid;
     Animator anim;
     Vector3 dirVec;
     GameObject scanObject;
-    public PlayerLeftMovements leftMove;
     EventableObjects eObjects;
     EndingFlags ending;
     GameObject pausePopup;
     GameObject gameoverPopup;
-
     GameObject spawnPoint;
 
     Transform dialogueSystem;
@@ -62,12 +61,11 @@ public class PlayerMovement : MonoBehaviour
             dialogueSystem.GetComponent<DialogueRunner>().Stop();
         }
 
-        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
-        {
-            ending.ShowEndings(gameoverPopup);
-        }
+        // if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
+        // {
+        //     ending.ShowEndings(gameoverPopup);
+        // }
 
-        print(string.Format("{0} {1}", yarnValueGetter.isSkipWeek, yarnValueGetter.isTalkEnd));
         if (yarnValueGetter.isSkipWeek)
         {
             SkipWeeks(scanObject.GetComponent<ObjData>().id);
@@ -99,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("Moveh", (int)h);
         anim.SetInteger("Movev", (int)v);
 
-        //����
+        //Raycast Vector
         if (v == 1)
         {
             dirVec = Vector3.up;
@@ -156,26 +154,6 @@ public class PlayerMovement : MonoBehaviour
                     return;
                 }
             }
-            /*             // legacy script data
-                                    if (manager.talkIndex == 0)
-                                    {
-                                        if (itrManager.itrActionIndex == 0)
-                                        {
-                                            if (leftMove.moveLeft != 0)
-                                            {
-                                                AdjustStats(scanObject.GetComponent<ObjData>().id);
-                                                leftMove.ReduceSlider();
-                                            }
-                                        }
-                                    }
-                                    try
-                                    {
-                                        if (leftMove.moveLeft != 0) manager.Action(scanObject);
-                                    }
-                                    catch
-                                    {
-
-                                    } */
         }
     }
 
@@ -200,8 +178,8 @@ public class PlayerMovement : MonoBehaviour
                 flag = false;
                 break;
         }
-        yarnValueGetter.isTalkEnd = false;
         if (flag) leftMove.ReduceSlider();
+        yarnValueGetter.isTalkEnd = false;
     }
 
     void SkipWeeks(int objectID)

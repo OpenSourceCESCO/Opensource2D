@@ -38,7 +38,6 @@ public class GameManager : MonoBehaviour
 
         if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
         {
-            
             gameoverPopup.SetActive(true);
         }
 

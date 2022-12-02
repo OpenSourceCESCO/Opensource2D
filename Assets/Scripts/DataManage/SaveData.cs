@@ -15,9 +15,3 @@ public class SaveData
     public List<string> statNames = new List<string>();
     public List<float> statValues = new List<float>();
 }
-
-public class PlayerStat
-{
-    public string statName;
-    public float statValue;
-}

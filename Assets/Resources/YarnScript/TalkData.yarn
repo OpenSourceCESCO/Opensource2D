@@ -59,5 +59,4 @@ title: Quest_object_inQuest
 <<else>>
     <<set $quest_script_no to 0>>
 <<endif>>
-System: Debuging...
 ===
