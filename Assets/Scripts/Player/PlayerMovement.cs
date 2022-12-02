@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
             ending.ShowEndings(gameoverPopup);
         }
 
+        print(string.Format("{0} {1}", yarnValueGetter.isSkipWeek, yarnValueGetter.isTalkEnd));
         if (yarnValueGetter.isSkipWeek)
         {
             SkipWeeks(scanObject.GetComponent<ObjData>().id);
@@ -84,11 +85,6 @@ public class PlayerMovement : MonoBehaviour
         PlayerTalk();
 
         if (Input.GetKeyDown("r")) leftMove.ReduceSlider(); // test용도
-    }
-
-    public void GetSkipWeekFlag()
-    {
-        yarnValueGetter.GetSkipWeekFlag();
     }
 
     void GetKeyOfPlayerMove()
@@ -185,6 +181,7 @@ public class PlayerMovement : MonoBehaviour
 
     void AdjustStats(int objectID)
     {
+        bool flag = true;
         if (!yarnValueGetter.isTalkEnd) return;
         switch (eObjects.eventableObject[objectID])
         {
@@ -200,10 +197,11 @@ public class PlayerMovement : MonoBehaviour
                 Singletone.Instance.playerStats["int"] += (int)Random.Range(0, 1);
                 break;
             default:
-                return;
+                flag = false;
+                break;
         }
         yarnValueGetter.isTalkEnd = false;
-        leftMove.ReduceSlider();
+        if (flag) leftMove.ReduceSlider();
     }
 
     void SkipWeeks(int objectID)
