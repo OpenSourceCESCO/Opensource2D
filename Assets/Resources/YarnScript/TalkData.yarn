@@ -1,0 +1,62 @@
+﻿title: NPCGirlTalk
+tags:
+---
+<<declare $quest_flag to false as bool>>
+<<declare $quest_script_no to 0 as number>>
+<<declare $doubt to false as bool>>
+<<declare $quest_confirmed to false as bool>>
+<<declare $isTalkEnd to false as bool>>
+<<declare $playerName to "Player">>
+
+
+<<set $isTalkEnd to false>>
+-> {$playerName}: 퀘스트에 관해 물어본다.
+    <<if $quest_flag is true>>
+        <<jump Quest_npc>>
+    <<endif>>
+-> Player: 대화한다.
+    친구: 안녕?
+    친구: 이곳에 처음 왔구나?  
+    <<set $isTalkEnd to true>>
+===
+title: Quest_npc
+---
+<<if $quest_flag is true>>
+    친구: 저 보석엔 슬픈 전설이 있어...
+    친구: 난 전설같은거 믿지 않아...
+    <<set $quest_confirmed to true>>
+<<endif>>
+===
+title: Quest_object
+---
+-> System: Quest
+    <<if $doubt is true>>
+        <<jump Quest_object_inQuest>>
+    <<endif>>
+-> System: ...
+    <<jump Quest_object_doubt>>
+===
+title: Quest_object_doubt
+---
+{$playerName}: ...
+{$playerName}: 별 특이사항이 없다.
+<<set $doubt to true>>
+===
+title: Quest_object_inQuest
+---    
+<<if $quest_script_no is 0>>
+    {$playerName}: 아무래도 미심쩍다.
+    {$playerName}: 친구에게 보석에 대해 물어보자.
+    <<set $quest_script_no to 1>>
+    <<set $quest_flag to true>>
+<<elseif $quest_script_no is 1 and $quest_confirmed is true>>
+    {$playerName}: 친구의 말을 듣고 보석을 들여다봤다.
+    {$playerName}: 역시나 별 특이사항이 없다.
+    <<set $doubt to false>>
+    <<set $quest_script_no to 0>>
+    <<set $quest_confirmed to false>>
+    <<set $isTalkEnd to true>>
+<<else>>
+    <<set $quest_script_no to 0>>
+<<endif>>
+===
