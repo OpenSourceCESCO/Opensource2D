@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     GameObject gameoverPopup;
     GameObject spawnPoint;
 
+    GameObject Sprite;
+
     Transform dialogueSystem;
     GetValueInScripts yarnValueGetter;
 
@@ -44,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         eObjects = new EventableObjects();
         ending = new EndingFlags();
+        Sprite = GameObject.Find("DSParent/Dialogue System/Canvas/Sprite");
     }
 
     // Update is called once per frame
@@ -144,6 +147,7 @@ public class PlayerMovement : MonoBehaviour
                             break;
                         case "professor":
                             dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Professor");
+                            Sprite.GetComponent<Image>().sprite = Resources.Load("Image/prof_portrait", typeof(Sprite)) as Sprite;
                             break;
                         default:
                             break;
