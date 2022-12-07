@@ -1,15 +1,6 @@
 # Opensource2D - 학부매니저 2022
 
-
-[동영상 추가 시도 1](https://seanlion.github.io/blog/4)
-
-{% include video.html id="YehQvPknIBM" %}  
-
-[동영상 추가 시도 2](https://ansohxxn.github.io/blog/youtube/)
-<iframe width="956" height="538" src="https://www.youtube.com/embed/YehQvPknIBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-[동영상 추가 시도 3](https://www.linkedin.com/pulse/how-add-embedded-video-github-readme-file-cengiz-toru)
-https://github.com/OpenSourceCESCO/Opensource2D/blob/main/_include/asdf.mp4
+https://user-images.githubusercontent.com/81803973/206203976-4adfa041-f4cf-4ae5-ab87-4354fdfc88f9.mp4
 
 ## 규칙
 회의 후 추가할 예정
