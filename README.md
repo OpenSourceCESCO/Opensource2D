@@ -88,6 +88,7 @@ public static void main()
   - [sunnyside](https://danieldiggle.itch.io/sunnyside)
   - [TopDown 2D RPG BE](https://assetstore.unity.com/packages/2d/characters/top-down-2d-rpg-assets-pack-188718)
   - [Yarn Spinner](https://docs.yarnspinner.dev/)
+  - [Potal](https://www.pngwing.com/ko/free-png-kubkt)
 * 폰트
   - [maplestory 폰트](https://maplestory.nexon.com/Media/Font)
   - [TextMeshPro 한글 깨짐](https://blockdmask.tistory.com/590)
