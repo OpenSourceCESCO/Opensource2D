@@ -54,6 +54,16 @@ public class SaveData {
     public float initTime;
 }
 ```
+* 스크립트 작성 시 중괄호 시작 위치
+```c#
+public static void main()
+{
+  return 0;
+}
+```
+괄호는 유니티 기본 괄호 스타일로 한다.
+
+* [.editorconfig](https://www.lesstif.com/software-architect/editorconfig-maintain-consistent-coding-styles-129008089.html)를 이용하여 코드 인코딩 등 여러 사항을 통일한다.
 
 * * *
 ## 참고 문헌
@@ -67,9 +77,20 @@ public class SaveData {
   - [텔레포트 기능](https://youtu.be/9JvZwMmEydQ)
   - [GameObject는 비활성화된 object를 못찾는다](https://prosto.tistory.com/147)
   - [싱글톤 사용법](https://glikmakesworld.tistory.com/2)
+  - [FOV를 구현해보자 - boxcollider 필수](https://youtu.be/OQ1dRX5NyM0)
+  - [미니맵 구현](https://ncube-studio.tistory.com/40)
 * 세이브 데이터 저장
   - [c# JsonUtility로 json 파싱](https://bloodstrawberry.tistory.com/754)
   - [유니티에서 딕셔너리를 json으로 저장하는 법](https://timeboxstory.tistory.com/138)
+* 스크립트 관련
+  - [Yarn Spinner tutorial](https://youtu.be/CJu0ObGDQHY)
+* 에셋
+  - [sunnyside](https://danieldiggle.itch.io/sunnyside)
+  - [TopDown 2D RPG BE](https://assetstore.unity.com/packages/2d/characters/top-down-2d-rpg-assets-pack-188718)
+  - [Yarn Spinner](https://docs.yarnspinner.dev/)
+* 폰트
+  - [maplestory 폰트](https://maplestory.nexon.com/Media/Font)
+  - [TextMeshPro 한글 깨짐](https://blockdmask.tistory.com/590)
 
 * * *
 ## 팁
@@ -85,5 +106,10 @@ public class SaveData {
 * UI에서 버튼 클릭이 안먹힌다면 참고문헌의 *UI에서 버튼 클릭 웨 안댐?* 을 참고하자
 
 * [unity 빌드 실패시 해결방법](https://citynetc.tistory.com/231)
+* 자동 줄 정렬    
+  ctrl+k ctrl+f    
+  - vscode에서 자동 줄 정렬    
+    줄정렬 변경 - settings → word wrap (on : 중괄호가 밑으로 내려감, off : 중괄호가 밑으로 내려가지 않음)
+  - [Visual Studio에서 자동 줄 정렬](https://notstop.co.kr/1026)
 * * *
 ## 여담

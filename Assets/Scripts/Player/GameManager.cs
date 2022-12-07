@@ -8,30 +8,70 @@ public class GameManager : MonoBehaviour
     public GameObject talkPanel;
     public Text talkText;
     public GameObject scanObject;
-    public bool isAction;
+    public bool isTalkAction;
     public int talkIndex;
     public TalkManager talkManager;
+    public InteractionManager itrManager;
+    GameObject gameoverPopup;
+    GameObject pausePopup;
+    public static bool isPausePopup;
+
+    void Start()
+    {
+        Time.timeScale = 1;
+        isPausePopup = false;
+
+        Transform ingameUI = GameObject.FindGameObjectWithTag("InGameUI").transform;
+        gameoverPopup = ingameUI.Find("GameOver").gameObject;
+        pausePopup = ingameUI.Find("Pause").gameObject;
+
+        // Time.timeScale = 1;
+        Vector2 playerInitPos = Singletone.Instance.saveData.playerPos;
+        GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(playerInitPos.x, playerInitPos.y);
+    }
+
+    void Update()
+    {
+        if (isPausePopup) return;
+        if (gameoverPopup.activeSelf) return;
+        if (isTalkAction) return;
+
+        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
+        {
+            gameoverPopup.SetActive(true);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isPausePopup = true;
+            pausePopup.SetActive(true);
+            Time.timeScale = 0;
+        }
+    }
 
     public void Action(GameObject scanObj)
     {
         scanObject = scanObj;
         ObjData objData = scanObject.GetComponent<ObjData>();
         Talk(objData.id);
-        //talkText.text = "ÀÌ°ÍÀÇ ÀÌ¸§Àº " + scanObject.name + "ÀÌ¶ó°í ÇÑ´Ù.";
-        talkPanel.SetActive(isAction);
+        //talkText.text = "ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ " + scanObject.name + "ï¿½Ì¶ï¿½ï¿½ ï¿½Ñ´ï¿½.";
+        talkPanel.SetActive(isTalkAction);
     }
-    void Talk(int id)
-    {
-        string talkData = talkManager.GetTalk(id, talkIndex);
 
-        if(talkData == null)
+    void Talk(int id) // overloading test
+    {
+        int itrTalkIndex = itrManager.GetItrIndex(id);  //ìƒí˜¸ì‘ìš© index ë„˜ê²¨ì£¼ê¸°
+        string talkData = talkManager.GetTalk(id + itrTalkIndex, talkIndex);  //jsonì— ìˆëŠ” idxë¥¼ ìµœì¢…ì ìœ¼ë¡œ ë„˜ê²¨ì£¼ê¸°
+
+        if (talkData == null)
         {
-            isAction = false;
-            talkIndex = 0;  //´ëÈ­ Á¾·á ½Ã ÀÎµ¦½º ÃÊ±âÈ­
+            isTalkAction = false;
+            talkIndex = 0;  //ï¿½ï¿½È­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ ï¿½Ê±ï¿½È­
+            itrManager.CheckItr(id);
             return;
         }
         talkText.text = talkData;
-        isAction = true;
+        isTalkAction = true;
         talkIndex++;
     }
 }

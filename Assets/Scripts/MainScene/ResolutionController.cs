@@ -19,12 +19,12 @@ public class ResolutionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void initUI()
     {
-        for(int i = 0; i < Screen.resolutions.Length; i++)
+        for (int i = 0; i < Screen.resolutions.Length; i++)
         {
             if (Screen.resolutions[i].refreshRate == 60)
                 resolutions.Add(Screen.resolutions[i]);
@@ -32,7 +32,7 @@ public class ResolutionController : MonoBehaviour
         resolutionDropdown.options.Clear();
 
         int optionNum = 0;
-        foreach(Resolution item in resolutions)
+        foreach (Resolution item in resolutions)
         {
             Dropdown.OptionData option = new Dropdown.OptionData();
             option.text = item.width + " x " + item.height + " " + item.refreshRate + "hz";

@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Teleport : MonoBehaviour
 {
-/*     private GameObject player; */
+    /*     private GameObject player; */
     public GameObject portal;
 
-    public Transform GetDestination() {
+    public Transform GetDestination()
+    {
         return portal.transform;
     }
-    
-    
+
+
     /*     
     private float teleportTime;
     private float moveFactor = 0.1f;

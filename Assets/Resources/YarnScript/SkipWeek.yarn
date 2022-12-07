@@ -1,0 +1,25 @@
+﻿title: SkipWeek
+position: -257,-40
+---
+System: 다음 주차로 넘어가겠습니까?
+
+<<declare $skipWeek = false as bool>>
+-> System: 예
+        <<set $skipWeek = true>>
+        System: 다음 주차로 넘어갑니다.
+-> System: 아니오
+        <<set $skipWeek = false>>
+        System: 주차를 넘기지 않습니다.
+
+System: 설정한 값은 {$skipWeek} 입니다.
+===
+title: Professor
+---
+교수: 과제는 다 했니?
+
+-> Player: 네
+        교수: 과제를 다 했구나!
+        <<jump SkipWeek>> 
+-> Player: 아니요...
+        교수: 과제가 어려웠나보구나
+===

@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map/ParttimeMap.unity
     guid: dea9fc5207e660e42906b205b3b5c660
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: df569435f973e4749b92ccebfa2fc036
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
