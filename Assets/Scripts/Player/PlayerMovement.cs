@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         // if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
         // {
         //     ending.ShowEndings(gameoverPopup);
-        // }
+        // } // show ending은 game manager에서 실행
 
         if (yarnValueGetter.isSkipWeek)
         {
@@ -144,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
                     {
                         case "bed":
                             dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("SkipWeek");
+                            Sprite.GetComponent<Image>().sprite = Resources.Load("Image/img_inv", typeof(Sprite)) as Sprite;
                             break;
                         case "professor":
                             dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Professor");
@@ -161,9 +162,11 @@ public class PlayerMovement : MonoBehaviour
                     {
                         case "girl":
                             dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("NPCGirlTalk");
+                            Sprite.GetComponent<Image>().sprite = Resources.Load("Image/img_inv", typeof(Sprite)) as Sprite;
                             break;
                         case "gem":
                             dialogueSystem.GetComponent<DialogueRunner>().StartDialogue("Quest_object");
+                            Sprite.GetComponent<Image>().sprite = Resources.Load("Image/img_inv", typeof(Sprite)) as Sprite;
                             break;
                         default:
                             break;

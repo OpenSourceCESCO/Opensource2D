@@ -10,7 +10,7 @@ tags:
 
 
 <<set $isTalkEnd to false>>
--> {$playerName}: 퀘스트에 관해 물어본다.
+-> {"$playerName"}: 퀘스트에 관해 물어본다.
     <<if $quest_flag is true>>
         <<jump Quest_npc>>
     <<endif>>

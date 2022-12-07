@@ -18,10 +18,20 @@ public class GetValueInScripts : MonoBehaviour {
 
     public void GetSkipWeekFlag()
     {
-        memory.GetComponent<InMemoryVariableStorage>().TryGetValue<bool>("$skipWeek", out isSkipWeek);
+        try {
+            memory.GetComponent<InMemoryVariableStorage>().TryGetValue<bool>("$skipWeek", out isSkipWeek);
+        }
+        catch {
+
+        }
     }
 
     public void GetIsTalkEnd() {
-        memory.GetComponent<InMemoryVariableStorage>().TryGetValue<bool>("$isTalkEnd", out isTalkEnd);
+        try {
+            memory.GetComponent<InMemoryVariableStorage>().TryGetValue<bool>("$isTalkEnd", out isTalkEnd);
+        }
+        catch  {
+
+        }
     }
 }
