@@ -30,21 +30,57 @@ public class EndingFlags
 
         if (credit > creditHighThres)
         {
-            if (pCommu > pCommuHighThresh) result = EnterGraduateSchool();
-            else if (pCommu < pCommuLowThresh) result = GetJobAGoodCompany();
-            else result = GetJobAGoodCompany();
+            if (pCommu > pCommuHighThresh) 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/GS", typeof(Sprite)) as Sprite;
+                result = EnterGraduateSchool();
+            }
+            else if (pCommu < pCommuLowThresh) 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/GC", typeof(Sprite)) as Sprite;
+                result = GetJobAGoodCompany();
+            }
+            else
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/GC", typeof(Sprite)) as Sprite;
+                result = GetJobAGoodCompany();
+            }
         }
         else if (credit < creditLowThres)
         {
-            if (pCommu > pCommuHighThresh) result = GetJobASmallsizeCompany();
-            else if (pCommu < pCommuLowThresh) result = StayJobless();
-            else result = GetJobASmallsizeCompany();
+            if (pCommu > pCommuHighThresh) 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/GS", typeof(Sprite)) as Sprite;
+                result = GetJobASmallsizeCompany();
+            }
+            else if (pCommu < pCommuLowThresh) 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/JL", typeof(Sprite)) as Sprite;
+                result = StayJobless();
+            }
+            else 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/SC", typeof(Sprite)) as Sprite;
+                result = GetJobASmallsizeCompany();
+            }
         }
         else
         {
-            if (pCommu > pCommuHighThresh) result = GetJobAMiddlesizeCompany();
-            else if (pCommu < pCommuLowThresh) result = GetJobASmallsizeCompany();
-            else result = GetJobAMiddlesizeCompany();
+            if (pCommu > pCommuHighThresh) 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/MC", typeof(Sprite)) as Sprite;
+                result = GetJobAMiddlesizeCompany();
+            }
+            else if (pCommu < pCommuLowThresh) 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/SC", typeof(Sprite)) as Sprite;
+                result = GetJobASmallsizeCompany();
+            }
+            else 
+            {
+                gameoverPopup.transform.Find("EndingImage").gameObject.GetComponent<Image>().sprite = Resources.Load("Image/MC", typeof(Sprite)) as Sprite;
+                result = GetJobAMiddlesizeCompany();
+            }
         }
 
         gameoverPopup.transform.Find("Result").gameObject.GetComponent<Text>().text = result;
