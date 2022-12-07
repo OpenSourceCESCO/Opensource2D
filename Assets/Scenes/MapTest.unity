@@ -158,8 +158,8 @@ Transform:
   - {fileID: 573382004}
   - {fileID: 194300319}
   - {fileID: 2094794901}
-  - {fileID: 128971762}
   - {fileID: 2100987211}
+  - {fileID: 128971762}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -349,11 +349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -35.48
+      value: -35.51
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.54
+      value: -33.52
       objectReference: {fileID: 0}
     - target: {fileID: 8396565408079785706, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: teleportTime
@@ -689,11 +689,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6023917887958892252, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.1
+      value: -26
       objectReference: {fileID: 0}
     - target: {fileID: 6023917887958892252, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.87
+      value: 1.55
       objectReference: {fileID: 0}
     - target: {fileID: 6193030184445361422, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_SortingOrder
@@ -2911,10 +2911,10 @@ GameObject:
   m_Component:
   - component: {fileID: 649750073}
   - component: {fileID: 649750078}
-  - component: {fileID: 649750077}
   - component: {fileID: 649750076}
   - component: {fileID: 649750075}
   - component: {fileID: 649750074}
+  - component: {fileID: 649750079}
   m_Layer: 6
   m_Name: Professor2
   m_TagString: NPC
@@ -2997,26 +2997,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &649750077
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649750072}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5abf1c0f97fc1c4d8c95fb09dc760fe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &649750078
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3069,6 +3049,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &649750079
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649750072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a1a5752d3a9496744990b4e9b90179c9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &709078945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11222,6 +11222,7 @@ GameObject:
   - component: {fileID: 768106578}
   - component: {fileID: 768106577}
   - component: {fileID: 768106581}
+  - component: {fileID: 768106582}
   m_Layer: 6
   m_Name: Girl
   m_TagString: NPC
@@ -11356,6 +11357,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1000
+--- !u!95 &768106582
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768106576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9fffa95a129c034ea61e3665f54cbba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &893923141
 GameObject:
   m_ObjectHideFlags: 0
@@ -11622,10 +11643,10 @@ GameObject:
   m_Component:
   - component: {fileID: 918366937}
   - component: {fileID: 918366942}
-  - component: {fileID: 918366941}
   - component: {fileID: 918366940}
   - component: {fileID: 918366939}
   - component: {fileID: 918366938}
+  - component: {fileID: 918366943}
   m_Layer: 6
   m_Name: Professor4
   m_TagString: NPC
@@ -11708,26 +11729,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &918366941
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 918366936}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5abf1c0f97fc1c4d8c95fb09dc760fe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &918366942
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11780,6 +11781,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &918366943
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918366936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bcf764ba51f8d2d43a6e2fdf8f9a9b5f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &943717523
 GameObject:
   m_ObjectHideFlags: 0
@@ -11861,6 +11882,7 @@ GameObject:
   - component: {fileID: 959457141}
   - component: {fileID: 959457140}
   - component: {fileID: 959457139}
+  - component: {fileID: 959457143}
   m_Layer: 6
   m_Name: DrunkNpc
   m_TagString: NPC
@@ -11995,6 +12017,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &959457143
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959457137}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a5abf1c0f97fc1c4d8c95fb09dc760fe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &968382744
 GameObject:
   m_ObjectHideFlags: 0
@@ -12911,11 +12953,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4938823117009800928, guid: a08163e1cf5121e47b44fbdedf23065d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -186.9
       objectReference: {fileID: 0}
     - target: {fileID: 4938823117009800928, guid: a08163e1cf5121e47b44fbdedf23065d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 26.8
       objectReference: {fileID: 0}
     - target: {fileID: 4938823117009800928, guid: a08163e1cf5121e47b44fbdedf23065d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -34026,11 +34068,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6023917887958892252, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -56.62
+      value: -56.51
       objectReference: {fileID: 0}
     - target: {fileID: 6023917887958892252, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 6193030184445361422, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_SortingOrder
@@ -34038,11 +34080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -75.55
+      value: -75.5
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.85
+      value: -5.17
       objectReference: {fileID: 0}
     - target: {fileID: 8396565408079785706, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: teleportTime
@@ -34069,10 +34111,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1982809748}
   - component: {fileID: 1982809753}
-  - component: {fileID: 1982809752}
   - component: {fileID: 1982809751}
   - component: {fileID: 1982809750}
   - component: {fileID: 1982809749}
+  - component: {fileID: 1982809754}
   m_Layer: 6
   m_Name: Professor3
   m_TagString: NPC
@@ -34155,26 +34197,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!95 &1982809752
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982809747}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a5abf1c0f97fc1c4d8c95fb09dc760fe, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &1982809753
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34227,6 +34249,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1982809754
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982809747}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3dc6e1edf600bf14190191bcbc6673e7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2033052082
 GameObject:
   m_ObjectHideFlags: 0
@@ -34452,7 +34494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -32.73
+      value: -33.51
       objectReference: {fileID: 0}
     - target: {fileID: 8396565408079785706, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: teleportTime
@@ -34482,7 +34524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6017891871855068453, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6017891871855068453, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -34526,11 +34568,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6023917887958892252, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -48.57
+      value: -48.51
       objectReference: {fileID: 0}
     - target: {fileID: 6023917887958892252, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.93
+      value: -3.39
       objectReference: {fileID: 0}
     - target: {fileID: 6193030184445361422, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_SortingOrder
@@ -34538,11 +34580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -52.14
+      value: -51.99
       objectReference: {fileID: 0}
     - target: {fileID: 7269369299878557769, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.08
+      value: 13.3
       objectReference: {fileID: 0}
     - target: {fileID: 8396565408079785706, guid: bfd8b2d0ec79abf43a2421763b4ce90e, type: 3}
       propertyPath: teleportTime
