@@ -47,16 +47,7 @@ public class Singletone
         {
             // 저장된 파일 읽어오고 Json을 클래스 형식으로 전환해서 할당
             string FromJsonData = File.ReadAllText(filePath);
-            try
-            {
-                saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
-            }
-            catch
-            {
-                Debug.Log("asdf");
-                Singletone.Instance.InitUserData();
-                return;
-            }
+            saveData = JsonUtility.FromJson<SaveData>(FromJsonData);
 
             // 딕셔너리를 배열로 바꾸어 저장한 것을 딕셔너리로 재생성
             for (int i = 0; i < saveData.statNames.Count; i++)

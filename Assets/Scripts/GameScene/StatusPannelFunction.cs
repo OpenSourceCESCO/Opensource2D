@@ -11,7 +11,7 @@ public class StatusPannelFunction : MonoBehaviour
 
     void Start()
     {
-        Singletone.Instance.InitUserData(); // 테스트용
+        // Singletone.Instance.InitUserData(); // 테스트용
 
         playerStat = GameObject.Find("PlayerStat").transform.Find("Background");
         SaveData data = Singletone.Instance.saveData;
@@ -36,6 +36,7 @@ public class StatusPannelFunction : MonoBehaviour
         foreach (KeyValuePair<string, GameObject> item in status)
         {
             string text = Singletone.Instance.playerStats[item.Key].ToString();
+            print(string.Format("{0} {1}", item.Key, Singletone.Instance.playerStats[item.Key]));
             switch (item.Key)
             {
                 case "grade":
