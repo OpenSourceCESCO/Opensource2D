@@ -1,9 +1,12 @@
 # Opensource2D - 학부매니저 2022
 
 
-  {% include video.html id="YehQvPknIBM" %}  
+[동영상 추가 시도 1](https://seanlion.github.io/blog/4)
 
+{% include video.html id="YehQvPknIBM" %}  
 
+[동영상 추가 시도 2](https://ansohxxn.github.io/blog/youtube/)
+<iframe width="956" height="538" src="https://www.youtube.com/embed/YehQvPknIBM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## 규칙
 회의 후 추가할 예정
