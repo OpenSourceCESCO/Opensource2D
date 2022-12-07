@@ -64,10 +64,10 @@ public class PlayerMovement : MonoBehaviour
             dialogueSystem.GetComponent<DialogueRunner>().Stop();
         }
 
-        if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
-        {
-            ending.ShowEndings(gameoverPopup);
-        }
+        // if (Singletone.Instance.playerStats["grade"] == 5 && Singletone.Instance.playerStats["weeks"] == 1)
+        // {
+        //     ending.ShowEndings(gameoverPopup);
+        // } // show ending은 game manager에서 실행
 
         if (yarnValueGetter.isSkipWeek)
         {
