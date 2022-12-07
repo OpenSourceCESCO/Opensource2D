@@ -1,4 +1,9 @@
-# Opensource2D
+# Opensource2D - 학부매니저 2022
+
+
+  {% include video.html id="YehQvPknIBM" %}  
+
+
 
 ## 규칙
 회의 후 추가할 예정
